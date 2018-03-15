@@ -13,6 +13,15 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <p>
+          <br/>
+          <div  className="alert alert-success">
+            <span  className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span  className="sr-only">Error:</span>
+            Bootstrap is working ok.
+            <button type="button" className="btn btn-primary">Primary</button>
+          </div>
+        </p>
       </div>
     );
   }
