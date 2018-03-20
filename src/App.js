@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-//Bootstrp3
+//CSSs Frameworks
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-//Custom style
+import '../node_modules/font-awesome/css/font-awesome.css'
+//TuCasa style
 import './App.css';
 //Scenes
 import Home from './scenes/Home';

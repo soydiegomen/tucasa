@@ -6,7 +6,7 @@ class OperationFilter extends Component {
         <div id="filtro-propiedad">
           <div className="filter-header">
             <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-            Tipo de operación
+            <span className="title">Tipo de operación</span>
           </div>
           <div className="filter-content">
             <ul className="list-unstyled">

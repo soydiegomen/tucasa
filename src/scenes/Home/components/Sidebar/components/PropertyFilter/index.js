@@ -6,7 +6,7 @@ class PropertyFilter extends Component {
         <div id="filtro-propiedad">
           <div className="filter-header">
             <i className="fa fa-home" aria-hidden="true"></i>
-            Tipo de propiedad
+            <span className="title">Tipo de propiedad</span>
           </div>
           <div className="filter-content">
             <ul className="list-unstyled">

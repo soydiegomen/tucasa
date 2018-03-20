@@ -6,7 +6,7 @@ class PriceFilter extends Component {
         <div id="filtro-precios">
           <div className="filter-header">
             <i className="fa fa-usd" aria-hidden="true"></i>
-            Rango de precios
+            <span className="title">Rango de precios</span>
           </div>
           <div className="filter-content text-center price-filter">
             <div>

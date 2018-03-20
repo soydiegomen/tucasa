@@ -6,7 +6,7 @@ class KeywordFilter extends Component {
           <div id="filtro-habitaciones">
             <div className="filter-header">
               <i className="fa fa-bed" aria-hidden="true"></i>
-              Palabras clave
+              <span className="title">Palabras clave</span>
             </div>
             <div className="filter-content text-center">
               <div className="form-group">

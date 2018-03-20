@@ -11,6 +11,9 @@ a, a:hover{
 	margin-top: 20px;
 	text-align: center;
 }
+.filter-header .title{
+	margin-left: 10px;
+}
 .filter-content{
 	padding: 10px 10px 0;
 	border: 1px solid #e1e3e5;
