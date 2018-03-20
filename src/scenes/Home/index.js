@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //Components
 import Header from '../../components/Header';
 import Sidebar from './components/Sidebar';
+import ListHouses from './components/ListHouses';
 
 class Home extends Component {
 	render() {
@@ -14,7 +15,7 @@ class Home extends Component {
 									<Sidebar />
 								</div>
 								<div id="houses-content" className="col-md-9">
-									houses-content
+									<ListHouses />
 								</div>
 							</div>
             </div>
