@@ -12,10 +12,10 @@ class HouseItem extends Component {
               </a>
               <div className="item-details">
                 <a href="#showDetails">
-                  <h4>
-                      $<span ></span>
+                  <h5>
+                      <span className="house-price">$2,500</span>
                       <span >Casa en el centro historico</span>
-                  </h4>
+                  </h5>
                   <div className="item-address text-muted">
                     <i className="fa fa-map-marker" aria-hidden="true"></i>
                     <span >Centro historico de Jilotepec #100</span>

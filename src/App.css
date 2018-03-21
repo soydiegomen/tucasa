@@ -4,6 +4,27 @@ body{
 a, a:hover{
 	color: #323a45;
 }
+/*Utilities*/
+/* style for crop image */
+.cropped-image {
+  position: relative;
+  width: auto;
+  overflow: hidden;
+}
+.cropped-image img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+.cropped-image img.portrait {
+  width: 100%;
+  height: auto;
+}
 /*Home*/
 .filter-header{
 	background-color: #e1e3e5;
@@ -17,4 +38,30 @@ a, a:hover{
 .filter-content{
 	padding: 10px 10px 0;
 	border: 1px solid #e1e3e5;
+}
+/*Home/HouseList*/
+.house-item{
+	margin: 20px 0;
+}
+.house-item a:hover{
+	text-decoration: none;
+}
+.house-item h5{
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+.house-item .item-views{
+	margin-left: 30px;
+}
+.house-item .house-image-content{
+	height: 270px;
+}
+.house-content-header{
+	text-align: left;
+}
+.item-details i{
+	margin-right: 5px;
+}
+.item-details .house-price{
+	margin-right: 5px;
 }

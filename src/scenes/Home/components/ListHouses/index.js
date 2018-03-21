@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import HouseItem from './components/HouseItem';
+import HousesPagination from './components/HousesPagination';
 
 class ListHouses extends Component {
   render() {
@@ -17,6 +18,11 @@ class ListHouses extends Component {
               </div>
           </div>
             { this.renderHouses() }
+            <div className="row">
+              <div className="col-md-12">
+                <HousesPagination />
+              </div>
+            </div>
         </div>
       );
     }
@@ -24,7 +30,7 @@ class ListHouses extends Component {
     renderHouses(){
       var houses = [];
       for(var i=0; i<10; i++){
-        houses.push(<HouseItem />);
+        houses.push(<HouseItem key={i}/>);
       }
 
       return (<div className="row">{houses}</div>)
