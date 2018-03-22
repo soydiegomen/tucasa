@@ -7,12 +7,20 @@ import { getPublishedHouses } from '../../services/api/Houses';
 
 class Home extends Component {
 
-	componentWillMount() {
+	constructor () {
+    super();
 
-    console.log('WillMount');
-		getPublishedHouses().then((listUsers) => {
-            console.log(listUsers);
-        });
+    this.state = {
+      houses: []
+    };
+  }
+
+	componentWillMount() {
+		getPublishedHouses().then(
+			(houses) => {
+				this.setState({ houses });
+      }
+		);
   }
 
 	render() {
@@ -25,7 +33,7 @@ class Home extends Component {
 									<Sidebar />
 								</div>
 								<div id="houses-content" className="col-md-9">
-									<ListHouses />
+									<ListHouses houses={this.state.houses} />
 								</div>
 							</div>
             </div>

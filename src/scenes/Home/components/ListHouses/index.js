@@ -5,6 +5,7 @@ import HousesPagination from './components/HousesPagination';
 
 class ListHouses extends Component {
   render() {
+
       return (
         <div id="main-container">
           <div className="row">
@@ -17,7 +18,13 @@ class ListHouses extends Component {
                 </div>
               </div>
           </div>
-            { this.renderHouses() }
+            <div className="row">
+            {
+              this.props.houses.map( house => (
+                <HouseItem house={house} key={house._id}/>
+              ))
+            }
+            </div>
             <div className="row">
               <div className="col-md-12">
                 <HousesPagination />
@@ -25,15 +32,6 @@ class ListHouses extends Component {
             </div>
         </div>
       );
-    }
-
-    renderHouses(){
-      var houses = [];
-      for(var i=0; i<10; i++){
-        houses.push(<HouseItem key={i}/>);
-      }
-
-      return (<div className="row">{houses}</div>)
     }
 }
 
