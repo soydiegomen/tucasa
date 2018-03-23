@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 
+import {buildHouseImage} from '../../../../../../services/utilities/ImageHelper';
+
 class HouseItem extends Component {
 
-  buildHouseImage(){
-    return (<img alt="casa uno" className="img-responsive portrait"
-    src="http://housefiles.loc:8888/uploads/2018/3/13/min-1521001117851-seis.jpg" />);
+  renderHouseImage(){
+    let houseFiles = this.props.house.filesData;
+    let houseImg = houseFiles.length > 0 ? houseImg = houseFiles[0].fileUrl : '';
+    return (buildHouseImage(houseImg));
   }
 
   render() {
@@ -13,7 +16,7 @@ class HouseItem extends Component {
             <article className="house-item">
               <a href="#showDetails">
                 <div className="cropped-image house-image-content">
-                  {this.buildHouseImage()}
+                  {this.renderHouseImage()}
                 </div>
               </a>
               <div className="item-details">
@@ -42,17 +45,6 @@ class HouseItem extends Component {
           </div>
       );
     }
-
-
-/*
-    function buildImageURL(){
-
-      src={'http://housefiles.loc:8888/' + picture.photoURL}
-      src="http://housefiles.loc:8888/uploads/2018/3/13/min-1521001117851-seis.jpg" />
-
-      //return 'http://housefiles.loc:8888/uploads/2018/3/13/min-1521001117851-seis.jpg';
-      return <h1>
-    }*/
 }
 
 export default HouseItem;
