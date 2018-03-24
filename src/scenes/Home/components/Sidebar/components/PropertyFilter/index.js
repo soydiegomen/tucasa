@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class PropertyFilter extends Component {
+
   render() {
       return (
         <div id="filtro-propiedad">
@@ -11,7 +12,7 @@ class PropertyFilter extends Component {
           <div className="filter-content">
             <ul className="list-unstyled">
               <li>
-                <a href="#casa" >Casas</a>
+                <a href="#casa" onClick={this.props.selectedPropertyHandle} id="Casa" >Casas</a>
               </li>
               <li>
                 <a href="#casa" >Departamentos</a>

@@ -5,6 +5,7 @@ import OperationFilter from './components/OperationFilter';
 import PriceFilter from './components/PriceFilter';
 
 class Sidebar extends Component {
+
   render() {
       return (
         <div>
@@ -12,7 +13,7 @@ class Sidebar extends Component {
             Filtros
           </div>
           <KeywordFilter />
-          <PropertyFilter />
+          <PropertyFilter selectedPropertyHandle={this.props.selectedPropertyHandle} />
           <OperationFilter />
           <PriceFilter />
         </div>
