@@ -15,19 +15,19 @@ class PropertyFilter extends Component {
                 <a href="#casa" onClick={this.props.selectedPropertyHandle} id="Casa" >Casas</a>
               </li>
               <li>
-                <a href="#casa" >Departamentos</a>
+                <a href="#casa" onClick={this.props.selectedPropertyHandle} id="Departamento">Departamentos</a>
               </li>
               <li>
-                <a href="#casa" >Locales</a>
+                <a href="#casa" onClick={this.props.selectedPropertyHandle} id="Local">Locales</a>
               </li>
               <li>
-                <a href="#casa" >Terrenos</a>
+                <a href="#casa" onClick={this.props.selectedPropertyHandle} id="Terreno">Terrenos</a>
               </li>
               <li>
-                <a href="#casa" >Salones</a>
+                <a href="#casa" onClick={this.props.selectedPropertyHandle} id="Salon">Salones</a>
               </li>
               <li>
-                <a href="#casa" >Otros</a>
+                <a href="#casa" onClick={this.props.selectedPropertyHandle} id="Otro">Otros</a>
               </li>
             </ul>
           </div>
