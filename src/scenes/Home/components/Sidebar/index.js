@@ -14,7 +14,7 @@ class Sidebar extends Component {
           </div>
           <KeywordFilter />
           <PropertyFilter selectedPropertyHandle={this.props.selectedPropertyHandle} />
-          <OperationFilter />
+          <OperationFilter selectedOperationHandle={this.props.selectedOperationHandle} />
           <PriceFilter />
         </div>
       );

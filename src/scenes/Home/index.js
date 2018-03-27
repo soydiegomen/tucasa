@@ -12,11 +12,16 @@ class Home extends Component {
 
     this.state = {
       houses: [],
-			filters: { houseProperty : null },
+			filters:
+				{
+					houseProperty : null,
+					houseOperation : null
+				},
 			houseType: null
     };
 
 		this.handleSelectProperty = this.handleSelectProperty.bind(this);
+		this.handleSelectOperation = this.handleSelectOperation.bind(this);
   }
 
 	componentWillMount() {
@@ -27,7 +32,7 @@ class Home extends Component {
 	//El state aún no ha aplicado el cambio, siendo que ya se ha seleccionado el filtro a aplicar
 	getListOfHouses(filters) {
 		console.log('getListOfHouses', filters );
-		getPublishedHouses(filters.houseProperty).then(
+		getPublishedHouses(filters).then(
 			(houses) => {
 				this.setState({ houses });
       }
@@ -45,6 +50,16 @@ class Home extends Component {
 		this.getListOfHouses(filters);
   }
 
+	handleSelectOperation (e) {
+    console.log('handleSelectOperation home', e.target.id);
+		let filters = this.state.filters;
+		filters.houseOperation = e.target.id;
+		//Update filter state
+		this.setState({ filters : filters });
+		//Call service using the new filter
+		this.getListOfHouses(filters);
+  }
+
 	render() {
     	return (
     		  <div className="Home">
@@ -52,7 +67,7 @@ class Home extends Component {
 	      		<div className="container-fluid">
 							<div className="row">
 								<div id="sidebar" className="col-md-3">
-									<Sidebar selectedPropertyHandle={this.handleSelectProperty} />
+									<Sidebar selectedPropertyHandle={this.handleSelectProperty} selectedOperationHandle={this.handleSelectOperation} />
 								</div>
 								<div id="houses-content" className="col-md-9">
 									<ListHouses houses={this.state.houses} />
