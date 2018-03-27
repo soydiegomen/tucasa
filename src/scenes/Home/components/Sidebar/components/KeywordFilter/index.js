@@ -3,22 +3,20 @@ import React, { Component } from 'react';
 class KeywordFilter extends Component {
   render() {
       return (
-          <div id="filtro-habitaciones">
+          <form id="filtro-habitaciones" onSubmit={this.props.searchKeywordHandle}>
             <div className="filter-header">
               <i className="fa fa-bed" aria-hidden="true"></i>
               <span className="title">Palabras clave</span>
             </div>
             <div className="filter-content text-center">
               <div className="form-group">
-                <input type="text" className="form-control" />
+                <input type="text" className="form-control" onChange={this.props.changeKeywordHandle}/>
               </div>
               <div className="form-group">
-                <a href="#filtrar" className="btn btn-primary coco-color">
-                  Buscar
-                </a>
+                <input type="submit" className="btn btn-primary coco-color" value="Buscar"/>
               </div>
             </div>
-          </div>
+          </form>
       );
     }
 }

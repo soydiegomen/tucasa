@@ -15,13 +15,17 @@ class Home extends Component {
 			filters:
 				{
 					houseProperty : null,
-					houseOperation : null
+					houseOperation : null,
+					houseKeyword : null
 				},
-			houseType: null
+			houseType: null,
+			keywordSelected: null
     };
 
 		this.handleSelectProperty = this.handleSelectProperty.bind(this);
 		this.handleSelectOperation = this.handleSelectOperation.bind(this);
+		this.handleSearchKeyword = this.handleSearchKeyword.bind(this);
+		this.handleKeywordChange = this.handleKeywordChange.bind(this);
   }
 
 	componentWillMount() {
@@ -60,6 +64,24 @@ class Home extends Component {
 		this.getListOfHouses(filters);
   }
 
+	handleSearchKeyword (e) {
+    console.log('handleSearchKeyword home');
+		e.preventDefault();
+		let filters = this.state.filters;
+		filters.houseKeyword = this.state.keywordSelected;
+		//Update filter state
+		this.setState({ filters : filters });
+		//Call service using the new filter
+		this.getListOfHouses(filters);
+  }
+
+	handleKeywordChange(event) {
+	  const value = event.target.value;
+	  this.setState({
+	    keywordSelected : value
+	  });
+	}
+
 	render() {
     	return (
     		  <div className="Home">
@@ -67,7 +89,9 @@ class Home extends Component {
 	      		<div className="container-fluid">
 							<div className="row">
 								<div id="sidebar" className="col-md-3">
-									<Sidebar selectedPropertyHandle={this.handleSelectProperty} selectedOperationHandle={this.handleSelectOperation} />
+									<Sidebar selectedPropertyHandle={this.handleSelectProperty} selectedOperationHandle={this.handleSelectOperation}
+									searchKeywordHandle={this.handleSearchKeyword}
+									changeKeywordHandle={this.handleKeywordChange} />
 								</div>
 								<div id="houses-content" className="col-md-9">
 									<ListHouses houses={this.state.houses} />
