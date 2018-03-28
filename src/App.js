@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 //CSSs Frameworks
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/font-awesome/css/font-awesome.css'
+import '../node_modules/react-input-range/lib/css/index.css';
 //TuCasa style
 import './App.css';
 //Scenes
