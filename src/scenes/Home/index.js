@@ -16,16 +16,27 @@ class Home extends Component {
 				{
 					houseProperty : null,
 					houseOperation : null,
-					houseKeyword : null
+					houseKeyword : null,
+					priceValue: {
+		        min: null,
+		        max: null,
+		      }
 				},
 			houseType: null,
-			keywordSelected: null
+			keywordSelected: null,
+			priceValue: {
+        min: 0,
+        max: 500,
+      }
     };
 
 		this.handleSelectProperty = this.handleSelectProperty.bind(this);
 		this.handleSelectOperation = this.handleSelectOperation.bind(this);
 		this.handleSearchKeyword = this.handleSearchKeyword.bind(this);
 		this.handleKeywordChange = this.handleKeywordChange.bind(this);
+		this.handleChangePrice = this.handleChangePrice.bind(this);
+		this.handleChangePriceComplate = this.handleChangePriceComplate.bind(this);
+		this.handleSelectPrice = this.handleSelectPrice.bind(this);
   }
 
 	componentWillMount() {
@@ -82,6 +93,26 @@ class Home extends Component {
 	  });
 	}
 
+	/*Pricefilter*/
+	handleChangePrice (value) {
+		//console.log('home:' +  value);
+		this.setState({ priceValue: value });
+	}
+
+	handleChangePriceComplate (value) {
+		console.log(value);
+	}
+
+	handleSelectPrice () {
+		console.log('handleSelectPrice');
+		let filters = this.state.filters;
+		filters.priceValue = this.state.priceValue;
+		//Update filter state
+		this.setState({ filters : filters });
+		//Call service using the new filter
+		this.getListOfHouses(filters);
+	}
+
 	render() {
     	return (
     		  <div className="Home">
@@ -91,10 +122,14 @@ class Home extends Component {
 								<div id="sidebar" className="col-md-3">
 									<Sidebar selectedPropertyHandle={this.handleSelectProperty} selectedOperationHandle={this.handleSelectOperation}
 									searchKeywordHandle={this.handleSearchKeyword}
-									changeKeywordHandle={this.handleKeywordChange} />
+									changeKeywordHandle={this.handleKeywordChange}
+									priceValue={this.state.priceValue}
+									changePriceHandle={this.handleChangePrice}
+									handleChangePriceComplate={this.handleChangePriceComplate}
+									handleSelectPrice = {this.handleSelectPrice} />
 								</div>
 								<div id="houses-content" className="col-md-9">
-									<ListHouses houses={this.state.houses} />
+									<ListHouses houses={this.state.houses}  />
 								</div>
 							</div>
             </div>

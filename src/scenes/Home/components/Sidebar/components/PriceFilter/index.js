@@ -6,12 +6,17 @@ import InputRange from 'react-input-range';
 class PriceFilter extends Component {
   constructor () {
     super();
-    this.state = { value : 0 };
+    this.state = {
+      priceValue: {
+        min: 0,
+        max: 500,
+      }
+    };
     this.handleChangePrice = this.handleChangePrice.bind(this);
   }
 
-  handleChangePrice(event){
-    console.log('value has change', event.target.value);
+  handleChangePrice(value){
+    console.log(value);
   }
 
   render() {
@@ -26,16 +31,19 @@ class PriceFilter extends Component {
               $1,500 a $50,000
             </div>
             <div>
-            <InputRange
-      maxValue={20}
-      minValue={0}
-      value={this.state.value}
-      onChange={value => this.setState({ value })} />
+              <br/><br/>
+              <InputRange
+                maxValue={1000}
+                minValue={0}
+                formatLabel={value => `${value}`}
+                value={ this.props.priceValue }
+                onChange={ this.props.changePriceHandle }
+                onChangeComplete={this.props.handleChangePriceComplate} />
             </div>
             <br/>
-            <a href="#apply" className="btn btn-primary" >
+            <button className="btn btn-primary" onClick= {this.props.handleSelectPrice}>
               Aplicar
-            </a>
+            </button>
           </div>
         </div>
       );
