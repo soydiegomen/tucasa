@@ -33,7 +33,7 @@ class Home extends Component {
 		this.handleSelectProperty = this.handleSelectProperty.bind(this);
 		this.handleSelectOperation = this.handleSelectOperation.bind(this);
 		this.handleSearchKeyword = this.handleSearchKeyword.bind(this);
-		this.handleKeywordChange = this.handleKeywordChange.bind(this);
+		this.handleChangeKeyword = this.handleChangeKeyword.bind(this);
 		this.handleChangePrice = this.handleChangePrice.bind(this);
 		this.handleChangePriceComplate = this.handleChangePriceComplate.bind(this);
 		this.handleSelectPrice = this.handleSelectPrice.bind(this);
@@ -86,7 +86,7 @@ class Home extends Component {
 		this.getListOfHouses(filters);
   }
 
-	handleKeywordChange(event) {
+	handleChangeKeyword(event) {
 	  const value = event.target.value;
 	  this.setState({
 	    keywordSelected : value
@@ -120,9 +120,10 @@ class Home extends Component {
 	      		<div className="container-fluid">
 							<div className="row">
 								<div id="sidebar" className="col-md-3">
-									<Sidebar selectedPropertyHandle={this.handleSelectProperty} selectedOperationHandle={this.handleSelectOperation}
-									searchKeywordHandle={this.handleSearchKeyword}
-									changeKeywordHandle={this.handleKeywordChange}
+									<Sidebar handleSelectProperty={this.handleSelectProperty}
+									handleSelectOperation={this.handleSelectOperation}
+									handleSearchKeyword={this.handleSearchKeyword}
+									handleChangeKeyword={this.handleChangeKeyword}
 									priceValue={this.state.priceValue}
 									changePriceHandle={this.handleChangePrice}
 									handleChangePriceComplate={this.handleChangePriceComplate}

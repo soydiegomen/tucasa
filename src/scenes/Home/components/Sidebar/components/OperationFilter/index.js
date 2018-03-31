@@ -11,10 +11,10 @@ class OperationFilter extends Component {
           <div className="filter-content">
             <ul className="list-unstyled">
               <li>
-                <a href="#Venta" onClick={this.props.selectedOperationHandle} id="Venta">Venta</a>
+                <a href="#Venta" onClick={this.props.handleSelectOperation} id="Venta">Venta</a>
               </li>
               <li>
-                <a href="#Renta" onClick={this.props.selectedOperationHandle} id="Renta">Renta</a>
+                <a href="#Renta" onClick={this.props.handleSelectOperation} id="Renta">Renta</a>
               </li>
             </ul>
           </div>

@@ -12,9 +12,10 @@ class Sidebar extends Component {
           <div className="filter-header">
             Filtros
           </div>
-          <KeywordFilter searchKeywordHandle={this.props.searchKeywordHandle} changeKeywordHandle={this.props.changeKeywordHandle} />
-          <PropertyFilter selectedPropertyHandle={this.props.selectedPropertyHandle} />
-          <OperationFilter selectedOperationHandle={this.props.selectedOperationHandle}  />
+          <KeywordFilter handleSearchKeyword={this.props.handleSearchKeyword}
+            handleChangeKeyword={this.props.handleChangeKeyword} />
+          <PropertyFilter handleSelectProperty={this.props.handleSelectProperty} />
+          <OperationFilter handleSelectOperation={this.props.handleSelectOperation}  />
           <PriceFilter priceValue={this.props.priceValue}
             changePriceHandle={this.props.changePriceHandle}
             handleChangePriceComplate={this.props.handleChangePriceComplate}
