@@ -65,3 +65,10 @@ a, a:hover{
 .item-details .house-price{
 	margin-right: 5px;
 }
+/*Price Filter*/
+.price-filter span:first-child{
+	margin-right: 5px;
+}
+.price-filter span:last-child{
+	margin-left: 5px;
+}

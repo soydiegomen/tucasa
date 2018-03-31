@@ -4,19 +4,19 @@ import InputRange from 'react-input-range';
 
 
 class PriceFilter extends Component {
-  constructor () {
-    super();
-    this.state = {
-      priceValue: {
-        min: 0,
-        max: 500,
-      }
-    };
-    this.handleChangePrice = this.handleChangePrice.bind(this);
-  }
 
-  handleChangePrice(value){
-    console.log(value);
+  showSelectedRange () {
+    if(this.props.minSelectedPrice || this.props.maxSelectedPrice){
+      return (
+        <div>
+          <span>
+            ${this.props.minSelectedPrice}
+          </span>
+          a
+          <span>${this.props.maxSelectedPrice}</span>
+        </div>
+      );
+    }
   }
 
   render() {
@@ -27,14 +27,15 @@ class PriceFilter extends Component {
             <span className="title">Rango de precios</span>
           </div>
           <div className="filter-content text-center price-filter">
-            <div>
-              $1,500 a $50,000
+            <div className="price-filter">
+              {this.showSelectedRange()}
             </div>
             <div>
               <br/><br/>
               <InputRange
-                maxValue={1000}
+                maxValue={10000}
                 minValue={0}
+                step={100}
                 formatLabel={value => `${value}`}
                 value={ this.props.priceValue }
                 onChange={ this.props.changePriceHandle }

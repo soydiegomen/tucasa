@@ -26,7 +26,7 @@ class Home extends Component {
 			keywordSelected: null,
 			priceValue: {
         min: 0,
-        max: 500,
+        max: 5000,
       }
     };
 
@@ -126,7 +126,8 @@ class Home extends Component {
 									priceValue={this.state.priceValue}
 									changePriceHandle={this.handleChangePrice}
 									handleChangePriceComplate={this.handleChangePriceComplate}
-									handleSelectPrice = {this.handleSelectPrice} />
+									handleSelectPrice = {this.handleSelectPrice}
+									appliedFilters = {this.state.filters}/>
 								</div>
 								<div id="houses-content" className="col-md-9">
 									<ListHouses houses={this.state.houses}  />

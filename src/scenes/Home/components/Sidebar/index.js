@@ -18,7 +18,9 @@ class Sidebar extends Component {
           <PriceFilter priceValue={this.props.priceValue}
             changePriceHandle={this.props.changePriceHandle}
             handleChangePriceComplate={this.props.handleChangePriceComplate}
-            handleSelectPrice = {this.props.handleSelectPrice} />
+            handleSelectPrice = {this.props.handleSelectPrice}
+            maxSelectedPrice= {this.props.appliedFilters.priceValue.max}
+            minSelectedPrice= {this.props.appliedFilters.priceValue.min}/>
         </div>
       );
     }
