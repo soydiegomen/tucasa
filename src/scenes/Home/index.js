@@ -131,7 +131,7 @@ class Home extends Component {
 									appliedFilters = {this.state.filters}/>
 								</div>
 								<div id="houses-content" className="col-md-9">
-									<ListHouses houses={this.state.houses}  />
+									<ListHouses houses={this.state.houses} selectedFilters={this.state.filters} />
 								</div>
 							</div>
             </div>
