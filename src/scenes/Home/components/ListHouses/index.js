@@ -6,6 +6,8 @@ import HousesPagination from './components/HousesPagination';
 
 class ListHouses extends Component {
 
+
+
   /*Helpers*/
   renderSelectedFilter () {
     let activeFilters = [];
@@ -27,9 +29,9 @@ class ListHouses extends Component {
     return (
       <ul className="list-inline">
         {
-          activeFilters.map( house => (
-            <li className="list-inline-item" key={house.type}>
-              <a href="#casa">{house.label}</a>
+          activeFilters.map( filter => (
+            <li className="list-inline-item" key={filter.type}>
+              <a href="#casa" onClick={this.props.handleUnselectFilter} id={filter.type}>{filter.label}</a>
             </li>
           ))
         }

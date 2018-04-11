@@ -5,7 +5,12 @@ import Sidebar from './components/Sidebar';
 import ListHouses from './components/ListHouses';
 import { getPublishedHouses } from '../../services/api/Houses';
 
+var MINPRICE = 0;
+var MAXPRICE = 5000;
+
 class Home extends Component {
+
+
 
 	constructor () {
     super();
@@ -25,8 +30,8 @@ class Home extends Component {
 			houseType: null,
 			keywordSelected: null,
 			priceValue: {
-        min: 0,
-        max: 5000,
+        min: MINPRICE,
+        max: MAXPRICE,
       }
     };
 
@@ -37,6 +42,7 @@ class Home extends Component {
 		this.handleChangePrice = this.handleChangePrice.bind(this);
 		this.handleChangePriceComplate = this.handleChangePriceComplate.bind(this);
 		this.handleSelectPrice = this.handleSelectPrice.bind(this);
+		this.handleUnselectFilter = this.handleUnselectFilter.bind(this);
   }
 
 	componentWillMount() {
@@ -113,6 +119,33 @@ class Home extends Component {
 		this.getListOfHouses(filters);
 	}
 
+	/*Unselect Filters*/
+	handleUnselectFilter (e) {
+    e.preventDefault();
+		console.log('unselecte filter');
+		let filters = this.state.filters;
+		switch(e.target.id){
+			case 'houseProperty':
+				filters.houseProperty = null;
+				break;
+			case 'houseOperation':
+					filters.houseOperation = null;
+					break;
+			case 'houseKeyword':
+					filters.houseKeyword = null;
+					break;
+			case 'priceValue':
+					filters.priceValue.min = null;
+					filters.priceValue.max = null;
+					break;
+		}
+
+		//Update filter state
+		this.setState({ filters : filters });
+		//Call service using the new filter
+		this.getListOfHouses(filters);
+  }
+
 	render() {
     	return (
     		  <div className="Home">
@@ -131,7 +164,8 @@ class Home extends Component {
 									appliedFilters = {this.state.filters}/>
 								</div>
 								<div id="houses-content" className="col-md-9">
-									<ListHouses houses={this.state.houses} selectedFilters={this.state.filters} />
+									<ListHouses houses={this.state.houses} selectedFilters={this.state.filters}
+									 	handleUnselectFilter={this.handleUnselectFilter}/>
 								</div>
 							</div>
             </div>
