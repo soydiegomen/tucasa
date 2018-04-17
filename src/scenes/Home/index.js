@@ -29,7 +29,7 @@ class Home extends Component {
 				},
 			houseType: null,
 			keywordSelected: null,
-			priceValue: {
+			rangePrice: {
         min: MINPRICE,
         max: MAXPRICE,
       }
@@ -62,7 +62,7 @@ class Home extends Component {
 
 	/*Handlers*/
 	handleSelectProperty (e) {
-    console.log('propertyselected home', e.target.id);
+    e.preventDefault();
 		let filters = this.state.filters;
 		filters.houseProperty = e.target.id;
 		//Update filter state
@@ -72,7 +72,7 @@ class Home extends Component {
   }
 
 	handleSelectOperation (e) {
-    console.log('handleSelectOperation home', e.target.id);
+    e.preventDefault();
 		let filters = this.state.filters;
 		filters.houseOperation = e.target.id;
 		//Update filter state
@@ -82,7 +82,6 @@ class Home extends Component {
   }
 
 	handleSearchKeyword (e) {
-    console.log('handleSearchKeyword home');
 		e.preventDefault();
 		let filters = this.state.filters;
 		filters.houseKeyword = this.state.keywordSelected;
@@ -101,8 +100,7 @@ class Home extends Component {
 
 	/*Pricefilter*/
 	handleChangePrice (value) {
-		//console.log('home:' +  value);
-		this.setState({ priceValue: value });
+		this.setState({ rangePrice: value });
 	}
 
 	handleChangePriceComplate (value) {
@@ -112,7 +110,7 @@ class Home extends Component {
 	handleSelectPrice () {
 		console.log('handleSelectPrice');
 		let filters = this.state.filters;
-		filters.priceValue = this.state.priceValue;
+		filters.priceValue = this.state.rangePrice;
 		//Update filter state
 		this.setState({ filters : filters });
 		//Call service using the new filter
@@ -135,8 +133,16 @@ class Home extends Component {
 					filters.houseKeyword = null;
 					break;
 			case 'priceValue':
+					//Reset price filter
 					filters.priceValue.min = null;
 					filters.priceValue.max = null;
+					//Set default value of range price (for slider)
+					var priceDefault = {
+		        min: MINPRICE,
+		        max: MAXPRICE,
+		      };
+					this.setState({ rangePrice: priceDefault });
+
 					break;
 		}
 
@@ -157,7 +163,7 @@ class Home extends Component {
 									handleSelectOperation={this.handleSelectOperation}
 									handleSearchKeyword={this.handleSearchKeyword}
 									handleChangeKeyword={this.handleChangeKeyword}
-									priceValue={this.state.priceValue}
+									priceValue={this.state.rangePrice}
 									changePriceHandle={this.handleChangePrice}
 									handleChangePriceComplate={this.handleChangePriceComplate}
 									handleSelectPrice = {this.handleSelectPrice}
