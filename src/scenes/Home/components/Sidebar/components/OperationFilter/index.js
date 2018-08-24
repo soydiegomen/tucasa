@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class OperationFilter extends Component {
   render() {
+
+      const { dispatch, selectedOperation } = this.props;
+      console.log('selectedOperation',selectedOperation);
+
       return (
         <div id="filtro-propiedad">
           <div className="filter-header">
@@ -23,4 +28,15 @@ class OperationFilter extends Component {
     }
 }
 
-export default OperationFilter;
+
+function mapStateToProps(state) {
+  const { selectedOperation  } = state;
+
+  return {
+    selectedOperation
+  }
+}
+
+export default connect(mapStateToProps)(OperationFilter);
+
+//export default OperationFilter;

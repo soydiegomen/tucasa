@@ -1,5 +1,5 @@
 import { VisibilityFilters } from '../../actions'
-const selectedOperation = (state = '', action) => {
+const selectedOperation = (state = 'Hi its me!', action) => {
   switch (action.type) {
     case 'SELECT_OPERATION':
       return action.operation
