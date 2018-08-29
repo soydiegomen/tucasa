@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectOperation } from '../../../../../../actions';
+import { selectOperation, fetchPublishedHouses } from '../../../../../../actions';
 
 class OperationFilter extends Component {
 
@@ -9,12 +9,6 @@ class OperationFilter extends Component {
     this.state = {};
     this.handleSelectOperation = this.handleSelectOperation.bind(this);
   }
-/*
-  componentDidUpdate(prevProps) {
-    if (this.props.selectedOperation !== prevProps.selectedOperation) {
-      console.log('CHANGED!', this.props.selectedOperation);
-    }
-  }*/
 
   /*Handlers*/
   handleSelectOperation (e) {
@@ -23,11 +17,13 @@ class OperationFilter extends Component {
 
     const { dispatch } = this.props;
     dispatch(selectOperation(houseOperation));
+    dispatch(fetchPublishedHouses());
   }
 
   render() {
 
-      const {  selectedOperation } = this.props;
+      const {  publishedHouses } = this.props;
+      console.log('publishedHouses', publishedHouses);
 
       return (
         <div id="filtro-propiedad">
@@ -49,15 +45,15 @@ class OperationFilter extends Component {
       );
     }
 
-
 }
 
 
 function mapStateToProps(state) {
-  const { selectedOperation  } = state;
+  const { selectedOperation, publishedHouses  } = state;
 
   return {
-    selectedOperation
+    selectedOperation,
+    publishedHouses
   }
 }
 
