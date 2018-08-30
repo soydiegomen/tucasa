@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectOperation, fetchPublishedHouses } from '../../../../../../actions';
+import { selectOperation } from '../../../../../../actions';
 
 class OperationFilter extends Component {
 
@@ -15,16 +15,11 @@ class OperationFilter extends Component {
     e.preventDefault();
     var houseOperation = e.target.id;
 
-    const { dispatch } = this.props;
+    const { dispatch, selectedOperation } = this.props;
     dispatch(selectOperation(houseOperation));
-    dispatch(fetchPublishedHouses());
   }
 
   render() {
-
-      const {  publishedHouses } = this.props;
-      console.log('publishedHouses', publishedHouses);
-
       return (
         <div id="filtro-propiedad">
           <div className="filter-header">
@@ -49,11 +44,11 @@ class OperationFilter extends Component {
 
 
 function mapStateToProps(state) {
-  const { selectedOperation, publishedHouses  } = state;
+  const { selectedOperation  } = state;
 
   return {
     selectedOperation,
-    publishedHouses
+
   }
 }
 

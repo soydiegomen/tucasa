@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 import Sidebar from './components/Sidebar';
 import ListHouses from './components/ListHouses';
 import { getPublishedHouses } from '../../services/api/Houses';
+import { fetchPublishedHouses } from '../../actions';
 
 var MINPRICE = 0;
 var MAXPRICE = 5000;
@@ -54,6 +55,8 @@ class Home extends Component {
 	componentDidUpdate(prevProps) {
     if (this.props.selectedOperation !== prevProps.selectedOperation) {
       console.log('Home: CHANGED!', this.props.selectedOperation);
+			const { dispatch, selectedOperation } = this.props;
+			dispatch(fetchPublishedHouses(selectedOperation));
     }
   }
 
@@ -188,10 +191,11 @@ class Home extends Component {
   	}
 }
 function mapStateToProps(state) {
-  const { selectedOperation  } = state;
+  const { selectedOperation, publishedHouses  } = state;
 
   return {
-    selectedOperation
+    selectedOperation,
+		publishedHouses
   }
 }
 

@@ -1,7 +1,8 @@
-import { VisibilityFilters } from '../../actions'
+import { SELECT_OPERATION } from '../../actions';
+
 const selectedOperation = (state = '', action) => {
   switch (action.type) {
-    case 'SELECT_OPERATION':
+    case SELECT_OPERATION:
       return action.operation;
     default:
       return state
