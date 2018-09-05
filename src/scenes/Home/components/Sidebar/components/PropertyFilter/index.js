@@ -1,8 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { selectProperty } from '../../../../../../actions';
 
 class PropertyFilter extends Component {
 
+  constructor () {
+    super();
+    this.state = {};
+    this.handleSelectProperty = this.handleSelectProperty.bind(this);
+  }
+
+  /*Handlers*/
+  handleSelectProperty (e) {
+    e.preventDefault();
+    var houseProperty = e.target.id;
+
+    const { dispatch } = this.props;
+    dispatch(selectProperty(houseProperty));
+  }
+
   render() {
+      const { selectedProperty } = this.props;
+      console.log('selectedProperty', selectedProperty);
       return (
         <div id="filtro-propiedad">
           <div className="filter-header">
@@ -12,22 +31,22 @@ class PropertyFilter extends Component {
           <div className="filter-content">
             <ul className="list-unstyled">
               <li>
-                <a href="#casa" onClick={this.props.handleSelectProperty} id="Casa" >Casas</a>
+                <a href="#casa" onClick={this.handleSelectProperty} id="Casa" >Casas</a>
               </li>
               <li>
-                <a href="#casa" onClick={this.props.handleSelectProperty} id="Departamento">Departamentos</a>
+                <a href="#casa" onClick={this.handleSelectProperty} id="Departamento">Departamentos</a>
               </li>
               <li>
-                <a href="#casa" onClick={this.props.handleSelectProperty} id="Local">Locales</a>
+                <a href="#casa" onClick={this.handleSelectProperty} id="Local">Locales</a>
               </li>
               <li>
-                <a href="#casa" onClick={this.props.handleSelectProperty} id="Terreno">Terrenos</a>
+                <a href="#casa" onClick={this.handleSelectProperty} id="Terreno">Terrenos</a>
               </li>
               <li>
-                <a href="#casa" onClick={this.props.handleSelectProperty} id="Salon">Salones</a>
+                <a href="#casa" onClick={this.handleSelectProperty} id="Salon">Salones</a>
               </li>
               <li>
-                <a href="#casa" onClick={this.props.handleSelectProperty} id="Otro">Otros</a>
+                <a href="#casa" onClick={this.handleSelectProperty} id="Otro">Otros</a>
               </li>
             </ul>
           </div>
@@ -36,4 +55,12 @@ class PropertyFilter extends Component {
     }
 }
 
-export default PropertyFilter;
+function mapStateToProps(state) {
+  const { selectedProperty  } = state;
+
+  return {
+    selectedProperty,
+  }
+}
+
+export default connect(mapStateToProps)(PropertyFilter);

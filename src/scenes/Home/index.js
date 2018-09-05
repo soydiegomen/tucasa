@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+//Redux
+import { connect } from 'react-redux';
 //Components
 import Header from '../../components/Header';
 import Sidebar from './components/Sidebar';
 import ListHouses from './components/ListHouses';
 import { getPublishedHouses } from '../../services/api/Houses';
+import { fetchPublishedHouses } from '../../actions';
 
 var MINPRICE = 0;
 var MAXPRICE = 5000;
@@ -47,6 +50,14 @@ class Home extends Component {
 
 	componentWillMount() {
 			this.getListOfHouses(this.state.filters);
+  }
+
+	componentDidUpdate(prevProps) {
+    if (this.props.selectedOperation !== prevProps.selectedOperation ||
+			this.props.selectedProperty !== prevProps.selectedProperty) {
+			const { dispatch, selectedOperation, selectedProperty } = this.props;
+			dispatch(fetchPublishedHouses(selectedOperation, selectedProperty));
+    }
   }
 
 	//Si trato de sacar los filtros directo del state, hay ocaciones donde
@@ -179,5 +190,14 @@ class Home extends Component {
 	    );
   	}
 }
+function mapStateToProps(state) {
+  const { selectedOperation, publishedHouses, selectedProperty  } = state;
 
-export default Home;
+  return {
+    selectedOperation,
+		publishedHouses,
+		selectedProperty
+  }
+}
+
+export default connect(mapStateToProps)(Home);

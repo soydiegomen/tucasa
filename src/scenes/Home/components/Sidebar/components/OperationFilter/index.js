@@ -1,6 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { selectOperation } from '../../../../../../actions';
 
 class OperationFilter extends Component {
+
+  constructor () {
+    super();
+    this.state = {};
+    this.handleSelectOperation = this.handleSelectOperation.bind(this);
+  }
+
+  /*Handlers*/
+  handleSelectOperation (e) {
+    e.preventDefault();
+    var houseOperation = e.target.id;
+
+    const { dispatch, selectedOperation } = this.props;
+    dispatch(selectOperation(houseOperation));
+  }
+
   render() {
       return (
         <div id="filtro-propiedad">
@@ -11,16 +29,27 @@ class OperationFilter extends Component {
           <div className="filter-content">
             <ul className="list-unstyled">
               <li>
-                <a href="#Venta" onClick={this.props.handleSelectOperation} id="Venta">Venta</a>
+                <a href="#Venta" onClick={this.handleSelectOperation} id="Venta">Venta</a>
               </li>
               <li>
-                <a href="#Renta" onClick={this.props.handleSelectOperation} id="Renta">Renta</a>
+                <a href="#Renta" onClick={this.handleSelectOperation} id="Renta">Renta</a>
               </li>
             </ul>
           </div>
         </div>
       );
     }
+
 }
 
-export default OperationFilter;
+
+function mapStateToProps(state) {
+  const { selectedOperation  } = state;
+
+  return {
+    selectedOperation,
+
+  }
+}
+
+export default connect(mapStateToProps)(OperationFilter);
