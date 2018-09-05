@@ -53,10 +53,10 @@ class Home extends Component {
   }
 
 	componentDidUpdate(prevProps) {
-    if (this.props.selectedOperation !== prevProps.selectedOperation) {
-      console.log('Home: CHANGED!', this.props.selectedOperation);
-			const { dispatch, selectedOperation } = this.props;
-			dispatch(fetchPublishedHouses(selectedOperation));
+    if (this.props.selectedOperation !== prevProps.selectedOperation ||
+			this.props.selectedProperty !== prevProps.selectedProperty) {
+			const { dispatch, selectedOperation, selectedProperty } = this.props;
+			dispatch(fetchPublishedHouses(selectedOperation, selectedProperty));
     }
   }
 
@@ -191,11 +191,12 @@ class Home extends Component {
   	}
 }
 function mapStateToProps(state) {
-  const { selectedOperation, publishedHouses  } = state;
+  const { selectedOperation, publishedHouses, selectedProperty  } = state;
 
   return {
     selectedOperation,
-		publishedHouses
+		publishedHouses,
+		selectedProperty
   }
 }
 
