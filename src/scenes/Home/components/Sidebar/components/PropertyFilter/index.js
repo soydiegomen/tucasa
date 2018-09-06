@@ -20,8 +20,6 @@ class PropertyFilter extends Component {
   }
 
   render() {
-      const { selectedProperty } = this.props;
-      console.log('selectedProperty', selectedProperty);
       return (
         <div id="filtro-propiedad">
           <div className="filter-header">

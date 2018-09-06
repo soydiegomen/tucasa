@@ -1,3 +1,4 @@
+import fetch from 'cross-fetch';
 import apiConfig from '../../config';
 
 //Obtienen las casas publicadas con base a ciertos filtros
@@ -12,4 +13,12 @@ export const getPublishedHouses = (filters) => {
             var users = response.json();
             return users;
         });
+};
+
+
+export const getPublishedHousesV2 = (filters) => {
+  let propertyFilter = filters.houseProperty ? encodeURIComponent(filters.houseProperty) : '';
+  let operationFilter = filters.houseOperation ? encodeURIComponent(filters.houseOperation) : '';
+  return fetch(`http://localhost:3000/api/published-houses?operation=${operationFilter}&property=${propertyFilter}`)
+    .then(response => response.json());
 };

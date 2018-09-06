@@ -1,4 +1,5 @@
 import fetch from 'cross-fetch';
+import { getPublishedHousesV2 } from '../services/api/Houses';
 
 export * from './Home/filters';
 
@@ -14,11 +15,9 @@ function receivePublishedHouses(json) {
   }
 }
 
-export const fetchPublishedHouses = function (operation, property) {
+export const fetchPublishedHouses = function (filters) {
   return dispatch => {
-    return fetch(`http://localhost:3000/api/published-houses?operation=${operation}&property=${property}`)
-      .then(response => response.json())
-      .then(json => {
+    return getPublishedHousesV2(filters).then(json => {
         dispatch(receivePublishedHouses(json));
       });
   }

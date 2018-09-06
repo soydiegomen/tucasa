@@ -56,7 +56,14 @@ class Home extends Component {
     if (this.props.selectedOperation !== prevProps.selectedOperation ||
 			this.props.selectedProperty !== prevProps.selectedProperty) {
 			const { dispatch, selectedOperation, selectedProperty } = this.props;
-			dispatch(fetchPublishedHouses(selectedOperation, selectedProperty));
+
+			//Build JSON with filters information
+			var filters = {
+		      houseProperty: selectedProperty,
+					houseOperation: selectedOperation
+		  };
+
+			dispatch(fetchPublishedHouses(filters));
     }
   }
 
