@@ -42,13 +42,11 @@ class OperationFilter extends Component {
 
 }
 
-
 function mapStateToProps(state) {
   const { selectedOperation  } = state;
 
   return {
-    selectedOperation,
-
+    selectedOperation
   }
 }
 

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+//Redux
+import { connect } from 'react-redux';
 
 import HouseItem from './components/HouseItem';
 import HousesPagination from './components/HousesPagination';
@@ -41,6 +43,9 @@ class ListHouses extends Component {
 
   render() {
 
+      const publishedHouses = this.props.publishedHouses;
+      console.log('ListHouses publishedHouses', publishedHouses);
+
       return (
         <div id="main-container">
           <div className="row">
@@ -51,7 +56,7 @@ class ListHouses extends Component {
                       <i className="fa fa-th-list" aria-hidden="true"></i>
                       <span className="title">Resultado de la búsqueda:
                       </span>
-                      <strong>{this.props.houses.length} propiedades</strong>
+                      <strong>{publishedHouses.length} propiedades</strong>
                     </div>
                     <div>
                       <span>Filtros seleccionados:</span>
@@ -63,7 +68,7 @@ class ListHouses extends Component {
           </div>
             <div className="row">
             {
-              this.props.houses.map( house => (
+              publishedHouses.map( house => (
                 <HouseItem house={house} key={house._id}/>
               ))
             }
@@ -78,4 +83,12 @@ class ListHouses extends Component {
     }
 }
 
-export default ListHouses;
+function mapStateToProps(state) {
+  const { publishedHouses  } = state;
+
+  return {
+		publishedHouses
+  }
+}
+
+export default connect(mapStateToProps)(ListHouses);
