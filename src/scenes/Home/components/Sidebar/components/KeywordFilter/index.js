@@ -26,16 +26,13 @@ class KeywordFilter extends Component {
   handleSelectKeyword (e) {
     e.preventDefault();
     const houseKeyword = this.state.keywordSelected;
-    console.log('houseKeyword', houseKeyword);
-    
+
     const { dispatch } = this.props;
     dispatch(selectKeyword(houseKeyword));
   }
 
   render() {
       const selectedKeyword = this.props.selectedKeyword;
-
-      console.log('selectedKeyword', selectedKeyword);
       return (
           <form id="filtro-habitaciones" onSubmit={this.handleSelectKeyword}>
             <div className="filter-header">

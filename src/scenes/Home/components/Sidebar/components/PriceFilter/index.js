@@ -1,9 +1,48 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import InputRange from 'react-input-range';
+//Redux
+import { connect } from 'react-redux';
+import { selectPriceRange } from '../../../../../../actions';
 
+var MINPRICE = 0;
+var MAXPRICE = 5000;
 
 class PriceFilter extends Component {
+
+  constructor () {
+    super();
+    this.state = {
+      filters : null,
+      rangePrice: {
+        min: MINPRICE,
+        max: MAXPRICE,
+      }
+    };
+    this.handleSelectPrice = this.handleSelectPrice.bind(this);
+    this.handleChangePrice = this.handleChangePrice.bind(this);
+    this.handleChangePriceComplate = this.handleChangePriceComplate.bind(this);
+  }
+
+  handleChangePrice (value) {
+		this.setState({ rangePrice: value });
+	}
+
+	handleChangePriceComplate (value) {
+		console.log('handleChangePriceComplate', value);
+	}
+
+  handleSelectPrice () {
+		var rangePrice = this.state.rangePrice;
+
+    const { dispatch } = this.props;
+    console.log('rangePrice', rangePrice);
+    dispatch(selectPriceRange(rangePrice));
+		//Update filter state
+		//this.setState({ filters : filters });
+		//Call service using the new filter
+		//this.getListOfHouses(filters);
+	}
 
   showSelectedRange () {
     if(this.props.minSelectedPrice || this.props.maxSelectedPrice){
@@ -20,6 +59,8 @@ class PriceFilter extends Component {
   }
 
   render() {
+
+      console.log('selectedPriceRange', this.props.selectedPriceRange );
       return (
         <div id="filtro-precios">
           <div className="filter-header">
@@ -37,12 +78,12 @@ class PriceFilter extends Component {
                 minValue={0}
                 step={100}
                 formatLabel={value => `${value}`}
-                value={ this.props.priceValue }
-                onChange={ this.props.changePriceHandle }
-                onChangeComplete={this.props.handleChangePriceComplate} />
+                value={ this.state.rangePrice }
+                onChange={ this.handleChangePrice }
+                onChangeComplete={this.handleChangePriceComplate} />
             </div>
             <br/>
-            <button className="btn btn-primary" onClick= {this.props.handleSelectPrice}>
+            <button className="btn btn-primary" onClick= {this.handleSelectPrice}>
               Aplicar
             </button>
           </div>
@@ -50,5 +91,12 @@ class PriceFilter extends Component {
       );
     }
 }
+function mapStateToProps(state) {
+  const { selectedPriceRange  } = state;
 
-export default PriceFilter;
+  return {
+    selectedPriceRange,
+  }
+}
+
+export default connect(mapStateToProps)(PriceFilter);

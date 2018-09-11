@@ -17,8 +17,10 @@ export const getPublishedHouses = (filters) => {
 
 
 export const getPublishedHousesV2 = (filters) => {
-  let propertyFilter = filters.houseProperty ? encodeURIComponent(filters.houseProperty) : '';
-  let operationFilter = filters.houseOperation ? encodeURIComponent(filters.houseOperation) : '';
-  return fetch(`http://localhost:3000/api/published-houses?operation=${operationFilter}&property=${propertyFilter}`)
+  let propertyFilter = filters.selectedProperty ? encodeURIComponent(filters.selectedProperty) : '';
+  let operationFilter = filters.selectedOperation ? encodeURIComponent(filters.selectedOperation) : '';
+  let keywordFiler = filters.selectedKeyword ? encodeURIComponent(filters.selectedKeyword) : '';
+  
+  return fetch(`http://localhost:3000/api/published-houses?operation=${operationFilter}&property=${propertyFilter}&search=${keywordFiler}`)
     .then(response => response.json());
 };
