@@ -49,7 +49,7 @@ class Home extends Component {
   }
 
 	componentWillMount() {
-			this.getListOfHouses(this.state.filters);
+			this.updatePublishedHousesList();
   }
 
 	componentDidUpdate(prevProps) {
@@ -58,19 +58,23 @@ class Home extends Component {
 			this.props.selectedKeyword !== prevProps.selectedKeyword ||
 			this.props.selectedPriceRange !== prevProps.selectedPriceRange) {
 
-			const { dispatch, selectedOperation, selectedProperty, selectedKeyword, selectedPriceRange } = this.props;
-
-			//Build JSON with filters information
-			var filters = {
-		      selectedProperty,
-					selectedOperation,
-					selectedKeyword,
-					selectedPriceRange
-		  };
-
-			dispatch(fetchPublishedHouses(filters));
+			this.updatePublishedHousesList();
     }
   }
+
+	updatePublishedHousesList(){
+		const { dispatch, selectedOperation, selectedProperty, selectedKeyword, selectedPriceRange } = this.props;
+
+		//Build JSON with filters information
+		var filters = {
+				selectedProperty,
+				selectedOperation,
+				selectedKeyword,
+				selectedPriceRange
+		};
+
+		dispatch(fetchPublishedHouses(filters));
+	}
 
 	//Si trato de sacar los filtros directo del state, hay ocaciones donde
 	//El state aún no ha aplicado el cambio, siendo que ya se ha seleccionado el filtro a aplicar
