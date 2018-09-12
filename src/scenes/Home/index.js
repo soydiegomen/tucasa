@@ -55,15 +55,17 @@ class Home extends Component {
 	componentDidUpdate(prevProps) {
     if (this.props.selectedOperation !== prevProps.selectedOperation ||
 			this.props.selectedProperty !== prevProps.selectedProperty ||
-			this.props.selectedKeyword !== prevProps.selectedKeyword) {
+			this.props.selectedKeyword !== prevProps.selectedKeyword ||
+			this.props.selectedPriceRange !== prevProps.selectedPriceRange) {
 
-			const { dispatch, selectedOperation, selectedProperty, selectedKeyword } = this.props;
+			const { dispatch, selectedOperation, selectedProperty, selectedKeyword, selectedPriceRange } = this.props;
 
 			//Build JSON with filters information
 			var filters = {
 		      selectedProperty,
 					selectedOperation,
-					selectedKeyword
+					selectedKeyword,
+					selectedPriceRange
 		  };
 
 			dispatch(fetchPublishedHouses(filters));
@@ -201,13 +203,14 @@ class Home extends Component {
   	}
 }
 function mapStateToProps(state) {
-  const { selectedOperation, publishedHouses, selectedProperty, selectedKeyword  } = state;
+  const { selectedOperation, publishedHouses, selectedProperty, selectedKeyword, selectedPriceRange  } = state;
 
   return {
     selectedOperation,
 		publishedHouses,
 		selectedProperty,
-		selectedKeyword
+		selectedKeyword,
+		selectedPriceRange
   }
 }
 
