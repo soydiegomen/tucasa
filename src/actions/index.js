@@ -8,7 +8,6 @@ export const RECEIVE_SIMPLE_POSTS = 'RECEIVE_PUBLISHED_HOUSES';
 
 
 function receivePublishedHouses(json) {
-  console.log('receiveSimplePosts', json);
   return {
     type: RECEIVE_SIMPLE_POSTS,
     publishedHouses: json,

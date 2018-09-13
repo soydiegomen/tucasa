@@ -19,6 +19,7 @@ class PriceFilter extends Component {
         max: MAXPRICE,
       }
     };
+
     this.handleSelectPrice = this.handleSelectPrice.bind(this);
     this.handleChangePrice = this.handleChangePrice.bind(this);
     this.handleChangePriceComplate = this.handleChangePriceComplate.bind(this);
@@ -28,20 +29,13 @@ class PriceFilter extends Component {
 		this.setState({ rangePrice: value });
 	}
 
-	handleChangePriceComplate (value) {
-		console.log('handleChangePriceComplate', value);
-	}
+	handleChangePriceComplate (value) {}
 
   handleSelectPrice () {
-		var rangePrice = this.state.rangePrice;
+		const rangePrice = this.state.rangePrice;
 
     const { dispatch } = this.props;
-    console.log('rangePrice', rangePrice);
     dispatch(selectPriceRange(rangePrice));
-		//Update filter state
-		//this.setState({ filters : filters });
-		//Call service using the new filter
-		//this.getListOfHouses(filters);
 	}
 
   showSelectedRange () {
@@ -59,8 +53,6 @@ class PriceFilter extends Component {
   }
 
   render() {
-
-      console.log('selectedPriceRange', this.props.selectedPriceRange );
       return (
         <div id="filtro-precios">
           <div className="filter-header">
@@ -91,12 +83,6 @@ class PriceFilter extends Component {
       );
     }
 }
-function mapStateToProps(state) {
-  const { selectedPriceRange  } = state;
-
-  return {
-    selectedPriceRange,
-  }
-}
+function mapStateToProps(state) {}
 
 export default connect(mapStateToProps)(PriceFilter);

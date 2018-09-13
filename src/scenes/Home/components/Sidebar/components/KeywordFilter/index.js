@@ -11,6 +11,7 @@ class KeywordFilter extends Component {
     this.state = {
       keywordSelected: null,
     };
+
     this.handleSelectKeyword = this.handleSelectKeyword.bind(this);
     this.handleChangeKeyword = this.handleChangeKeyword.bind(this);
   }
@@ -26,8 +27,8 @@ class KeywordFilter extends Component {
   handleSelectKeyword (e) {
     e.preventDefault();
     const houseKeyword = this.state.keywordSelected;
-
     const { dispatch } = this.props;
+    
     dispatch(selectKeyword(houseKeyword));
   }
 
@@ -52,12 +53,6 @@ class KeywordFilter extends Component {
     }
 }
 
-function mapStateToProps(state) {
-  const { selectedKeyword  } = state;
-
-  return {
-    selectedKeyword
-  }
-}
+function mapStateToProps(state) {}
 
 export default connect(mapStateToProps)(KeywordFilter);

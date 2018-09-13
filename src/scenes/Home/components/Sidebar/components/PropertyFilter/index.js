@@ -10,7 +10,6 @@ class PropertyFilter extends Component {
     this.handleSelectProperty = this.handleSelectProperty.bind(this);
   }
 
-  /*Handlers*/
   handleSelectProperty (e) {
     e.preventDefault();
     var houseProperty = e.target.id;
@@ -53,12 +52,6 @@ class PropertyFilter extends Component {
     }
 }
 
-function mapStateToProps(state) {
-  const { selectedProperty  } = state;
-
-  return {
-    selectedProperty,
-  }
-}
+function mapStateToProps(state) {}
 
 export default connect(mapStateToProps)(PropertyFilter);

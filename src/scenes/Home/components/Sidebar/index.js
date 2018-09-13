@@ -12,16 +12,10 @@ class Sidebar extends Component {
           <div className="filter-header">
             Filtros
           </div>
-          <KeywordFilter handleSearchKeyword={this.props.handleSearchKeyword}
-            handleChangeKeyword={this.props.handleChangeKeyword} />
-          <PropertyFilter handleSelectProperty={this.props.handleSelectProperty} />
-          <OperationFilter handleSelectOperation={this.props.handleSelectOperation}  />
-          <PriceFilter priceValue={this.props.priceValue}
-            changePriceHandle={this.props.changePriceHandle}
-            handleChangePriceComplate={this.props.handleChangePriceComplate}
-            handleSelectPrice = {this.props.handleSelectPrice}
-            maxSelectedPrice= {this.props.appliedFilters.priceValue.max}
-            minSelectedPrice= {this.props.appliedFilters.priceValue.min}/>
+          <KeywordFilter />
+          <PropertyFilter />
+          <OperationFilter />
+          <PriceFilter />
         </div>
       );
     }

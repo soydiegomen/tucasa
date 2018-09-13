@@ -13,8 +13,6 @@ var MAXPRICE = 5000;
 
 class Home extends Component {
 
-
-
 	constructor () {
     super();
 
@@ -38,13 +36,6 @@ class Home extends Component {
       }
     };
 
-		this.handleSelectProperty = this.handleSelectProperty.bind(this);
-		this.handleSelectOperation = this.handleSelectOperation.bind(this);
-		this.handleSearchKeyword = this.handleSearchKeyword.bind(this);
-		this.handleChangeKeyword = this.handleChangeKeyword.bind(this);
-		this.handleChangePrice = this.handleChangePrice.bind(this);
-		this.handleChangePriceComplate = this.handleChangePriceComplate.bind(this);
-		this.handleSelectPrice = this.handleSelectPrice.bind(this);
 		this.handleUnselectFilter = this.handleUnselectFilter.bind(this);
   }
 
@@ -52,6 +43,7 @@ class Home extends Component {
 			this.updatePublishedHousesList();
   }
 
+	//Check if some property change for apply filter and unpdate houses list
 	componentDidUpdate(prevProps) {
     if (this.props.selectedOperation !== prevProps.selectedOperation ||
 			this.props.selectedProperty !== prevProps.selectedProperty ||
@@ -62,6 +54,7 @@ class Home extends Component {
     }
   }
 
+	//Call to service for update houses list
 	updatePublishedHousesList(){
 		const { dispatch, selectedOperation, selectedProperty, selectedKeyword, selectedPriceRange } = this.props;
 
@@ -74,74 +67,6 @@ class Home extends Component {
 		};
 
 		dispatch(fetchPublishedHouses(filters));
-	}
-
-	//Si trato de sacar los filtros directo del state, hay ocaciones donde
-	//El state aún no ha aplicado el cambio, siendo que ya se ha seleccionado el filtro a aplicar
-	getListOfHouses(filters) {
-		console.log('getListOfHouses', filters );
-		getPublishedHouses(filters).then(
-			(houses) => {
-				this.setState({ houses });
-      }
-		);
-	}
-
-	/*Handlers*/
-	handleSelectProperty (e) {
-    e.preventDefault();
-		let filters = this.state.filters;
-		filters.houseProperty = e.target.id;
-		//Update filter state
-		this.setState({ filters : filters });
-		//Call service using the new filter
-		this.getListOfHouses(filters);
-  }
-
-	handleSelectOperation (e) {
-    e.preventDefault();
-		let filters = this.state.filters;
-		filters.houseOperation = e.target.id;
-		//Update filter state
-		this.setState({ filters : filters });
-		//Call service using the new filter
-		this.getListOfHouses(filters);
-  }
-
-	handleSearchKeyword (e) {
-		e.preventDefault();
-		let filters = this.state.filters;
-		filters.houseKeyword = this.state.keywordSelected;
-		//Update filter state
-		this.setState({ filters : filters });
-		//Call service using the new filter
-		this.getListOfHouses(filters);
-  }
-
-	handleChangeKeyword(event) {
-	  const value = event.target.value;
-	  this.setState({
-	    keywordSelected : value
-	  });
-	}
-
-	/*Pricefilter*/
-	handleChangePrice (value) {
-		this.setState({ rangePrice: value });
-	}
-
-	handleChangePriceComplate (value) {
-		console.log(value);
-	}
-
-	handleSelectPrice () {
-		console.log('handleSelectPrice');
-		let filters = this.state.filters;
-		filters.priceValue = this.state.rangePrice;
-		//Update filter state
-		this.setState({ filters : filters });
-		//Call service using the new filter
-		this.getListOfHouses(filters);
 	}
 
 	/*Unselect Filters*/
@@ -176,7 +101,7 @@ class Home extends Component {
 		//Update filter state
 		this.setState({ filters : filters });
 		//Call service using the new filter
-		this.getListOfHouses(filters);
+		//this.getListOfHouses(filters);
   }
 
 	render() {
@@ -186,14 +111,7 @@ class Home extends Component {
 	      		<div className="container-fluid">
 							<div className="row">
 								<div id="sidebar" className="col-md-3">
-									<Sidebar handleSelectProperty={this.handleSelectProperty}
-									handleSelectOperation={this.handleSelectOperation}
-									handleSearchKeyword={this.handleSearchKeyword}
-									handleChangeKeyword={this.handleChangeKeyword}
-									priceValue={this.state.rangePrice}
-									changePriceHandle={this.handleChangePrice}
-									handleChangePriceComplate={this.handleChangePriceComplate}
-									handleSelectPrice = {this.handleSelectPrice}
+									<Sidebar
 									appliedFilters = {this.state.filters}/>
 								</div>
 								<div id="houses-content" className="col-md-9">
@@ -207,7 +125,13 @@ class Home extends Component {
   	}
 }
 function mapStateToProps(state) {
-  const { selectedOperation, publishedHouses, selectedProperty, selectedKeyword, selectedPriceRange  } = state;
+  const {
+		selectedOperation,
+		publishedHouses,
+		selectedProperty,
+		selectedKeyword,
+		selectedPriceRange
+	} = state;
 
   return {
     selectedOperation,

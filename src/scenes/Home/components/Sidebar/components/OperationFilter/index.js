@@ -10,12 +10,11 @@ class OperationFilter extends Component {
     this.handleSelectOperation = this.handleSelectOperation.bind(this);
   }
 
-  /*Handlers*/
   handleSelectOperation (e) {
     e.preventDefault();
     var houseOperation = e.target.id;
 
-    const { dispatch, selectedOperation } = this.props;
+    const { dispatch } = this.props;
     dispatch(selectOperation(houseOperation));
   }
 
@@ -42,12 +41,6 @@ class OperationFilter extends Component {
 
 }
 
-function mapStateToProps(state) {
-  const { selectedOperation  } = state;
-
-  return {
-    selectedOperation
-  }
-}
+function mapStateToProps(state) {}
 
 export default connect(mapStateToProps)(OperationFilter);
