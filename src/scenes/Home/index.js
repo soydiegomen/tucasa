@@ -35,8 +35,6 @@ class Home extends Component {
         max: MAXPRICE,
       }
     };
-
-		this.handleUnselectFilter = this.handleUnselectFilter.bind(this);
   }
 
 	componentWillMount() {
@@ -69,41 +67,6 @@ class Home extends Component {
 		dispatch(fetchPublishedHouses(filters));
 	}
 
-	/*Unselect Filters*/
-	handleUnselectFilter (e) {
-    e.preventDefault();
-		console.log('unselecte filter');
-		let filters = this.state.filters;
-		switch(e.target.id){
-			case 'houseProperty':
-				filters.houseProperty = null;
-				break;
-			case 'houseOperation':
-					filters.houseOperation = null;
-					break;
-			case 'houseKeyword':
-					filters.houseKeyword = null;
-					break;
-			case 'priceValue':
-					//Reset price filter
-					filters.priceValue.min = null;
-					filters.priceValue.max = null;
-					//Set default value of range price (for slider)
-					var priceDefault = {
-		        min: MINPRICE,
-		        max: MAXPRICE,
-		      };
-					this.setState({ rangePrice: priceDefault });
-
-					break;
-		}
-
-		//Update filter state
-		this.setState({ filters : filters });
-		//Call service using the new filter
-		//this.getListOfHouses(filters);
-  }
-
 	render() {
     	return (
     		  <div className="Home">
@@ -115,8 +78,7 @@ class Home extends Component {
 									appliedFilters = {this.state.filters}/>
 								</div>
 								<div id="houses-content" className="col-md-9">
-									<ListHouses houses={this.state.houses} selectedFilters={this.state.filters}
-									 	handleUnselectFilter={this.handleUnselectFilter}/>
+									<ListHouses />
 								</div>
 							</div>
             </div>
