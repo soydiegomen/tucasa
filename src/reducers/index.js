@@ -4,11 +4,13 @@ import selectedProperty from './Home/selectedProperty';
 import publishedHouses from './Home/publishedHouses';
 import selectedKeyword from './Home/selectedKeyword';
 import selectedPriceRange from './Home/selectedPriceRange';
+import isActivePriceFilter from './Home/isActivePriceFilter';
 
 export default combineReducers({
   selectedOperation,
   publishedHouses,
   selectedProperty,
   selectedKeyword,
-  selectedPriceRange
+  selectedPriceRange,
+  isActivePriceFilter
 })

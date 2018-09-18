@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 //Redux
 import { connect } from 'react-redux';
 //Actions
-import { selectProperty, selectOperation, selectKeyword, selectPriceRange } from '../../../../../../actions';
+import {
+  selectProperty,
+  selectOperation,
+  selectKeyword,
+  selectPriceRange,
+  activatePriceFilter
+ } from '../../../../../../actions';
 
 var MINPRICE = 0;
 var MAXPRICE = 5000;
@@ -30,8 +36,8 @@ class SelectedFilters extends Component {
     if(this.props.selectedKeyword){
       activeFilters.push({ label: this.props.selectedKeyword, type:'houseKeyword'});
     }
-
-    if(this.props.selectedPriceRange.min || this.props.selectedPriceRange.max){
+    
+    if(this.props.isActivePriceFilter && (this.props.selectedPriceRange.min || this.props.selectedPriceRange.max)){
       let rangeLabel = `Mayor ${this.props.selectedPriceRange.min} y menor a ${this.props.selectedPriceRange.max}`;
       activeFilters.push({ label:rangeLabel, type:'priceValue'});
     }
@@ -69,6 +75,7 @@ class SelectedFilters extends Component {
 		        max: MAXPRICE,
 		      };
 					dispatch(selectPriceRange(rangePrice));
+          dispatch(activatePriceFilter(false));
 					break;
 		}
   }
@@ -88,14 +95,16 @@ function mapStateToProps(state) {
 		selectedOperation,
 		selectedProperty,
 		selectedKeyword,
-		selectedPriceRange
+		selectedPriceRange,
+    isActivePriceFilter
 	} = state;
 
   return {
     selectedOperation,
 		selectedProperty,
 		selectedKeyword,
-		selectedPriceRange
+		selectedPriceRange,
+    isActivePriceFilter
   }
 }
 

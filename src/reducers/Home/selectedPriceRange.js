@@ -1,6 +1,10 @@
-import { SELECT_PRICE_RANGE } from '../../actions/Home/filters';
+import {
+  SELECT_PRICE_RANGE,
+  DEFAULT_MIN_PRICE,
+  DEFAULT_MAX_PRICE
+ } from '../../actions/Home/filters';
 
-const selectedPriceRange = (state = { min : 0, max : 5000 }, action) => {
+const selectedPriceRange = (state = { min : DEFAULT_MIN_PRICE, max : DEFAULT_MAX_PRICE }, action) => {
   switch (action.type) {
     case SELECT_PRICE_RANGE:
       return action.priceRange;

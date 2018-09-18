@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import InputRange from 'react-input-range';
 //Redux
 import { connect } from 'react-redux';
-import { selectPriceRange } from '../../../../../../actions';
-
-var MINPRICE = 0;
-var MAXPRICE = 5000;
+import {
+  selectPriceRange,
+  activatePriceFilter,
+  DEFAULT_MIN_PRICE,
+  DEFAULT_MAX_PRICE
+ } from '../../../../../../actions';
 
 class PriceFilter extends Component {
 
@@ -15,8 +17,8 @@ class PriceFilter extends Component {
     this.state = {
       filters : null,
       rangePrice: {
-        min: MINPRICE,
-        max: MAXPRICE,
+        min: DEFAULT_MIN_PRICE,
+        max: DEFAULT_MAX_PRICE,
       }
     };
 
@@ -36,6 +38,8 @@ class PriceFilter extends Component {
 
     const { dispatch } = this.props;
     dispatch(selectPriceRange(rangePrice));
+    //isActivePriceFilter flag is used for turn on the link of the price filter
+    dispatch(activatePriceFilter(true));
 	}
 
   showSelectedRange () {
