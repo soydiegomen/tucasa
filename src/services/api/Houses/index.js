@@ -7,6 +7,7 @@ export const getPublishedHousesV2 = (filters) => {
   let keywordFiler = filters.selectedKeyword ? encodeURIComponent(filters.selectedKeyword) : '';
   let minPrice = filters.selectedPriceRange.min;
   let maxPrice = filters.selectedPriceRange.max;
+  //Fecha para la página siguiente. DateForNextPage and DateForPreviousPage
   let dateOfLastHouse = new Date(2017,4,1);
   dateOfLastHouse = encodeURIComponent(dateOfLastHouse.toISOString());
 
