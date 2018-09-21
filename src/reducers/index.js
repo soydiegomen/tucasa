@@ -6,6 +6,7 @@ import selectedKeyword from './Home/selectedKeyword';
 import selectedPriceRange from './Home/selectedPriceRange';
 import isActivePriceFilter from './Home/isActivePriceFilter';
 import paginationParameters from './Home/paginationParameters';
+import activePage from './Home/activePage';
 
 export default combineReducers({
   selectedOperation,
@@ -14,5 +15,6 @@ export default combineReducers({
   selectedKeyword,
   selectedPriceRange,
   isActivePriceFilter,
-  paginationParameters
+  paginationParameters,
+  activePage
 })
