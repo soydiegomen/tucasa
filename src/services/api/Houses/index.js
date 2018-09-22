@@ -7,11 +7,10 @@ export const getPublishedHousesV2 = (filters) => {
   let keywordFiler = filters.selectedKeyword ? encodeURIComponent(filters.selectedKeyword) : '';
   let minPrice = filters.selectedPriceRange.min;
   let maxPrice = filters.selectedPriceRange.max;
-  let itemLastDate = filters.itemLastDate ? encodeURIComponent(filters.itemLastDate) : (new Date()).toISOString();
-  let pagDirection = filters.pagDirection ? filters.pagDirection : "rigth";
-  //Fecha para la página siguiente. DateForNextPage and DateForPreviousPage
-  //let dateOfLastHouse = new Date(2017,4,1);
-  //dateOfLastHouse = encodeURIComponent(dateOfLastHouse.toISOString());
+  //Must format de date to ISO and encode for url
+  let itemLastDate = encodeURIComponent(filters.activePage.itemLastDate.toISOString());
+  //let itemLastDate = filters.itemLastDate ? encodeURIComponent(filters.itemLastDate) : (new Date()).toISOString();
+  let pagDirection = filters.activePage.pagDirection;
 
   return fetch(`http://localhost:3000/api/published-houses?min=${minPrice}&max=${maxPrice}&operation=${operationFilter}&property=${propertyFilter}&search=${keywordFiler}&itemLastDate=${itemLastDate}&pagDirection=${pagDirection}`)
     .then(response => response.json());

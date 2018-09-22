@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //Redux
 import { connect } from 'react-redux';
+import { changeActivePage } from '../../../../../../actions';
 
 
 class HousesPagination extends Component {
@@ -21,7 +22,7 @@ class HousesPagination extends Component {
       pagDirection: 'rigth'
     };
 
-    console.log('newActivePage', newActivePage);
+    dispatch(changeActivePage(newActivePage));
   }
 
   render() {
