@@ -26,12 +26,16 @@ class HousesPagination extends Component {
   }
 
   render() {
+
+      const publishedHouses = this.props.publishedHouses;
       return (
         <nav>
           <ul className="pagination justify-content-center">
             <li className="page-item"><a className="page-link" href="#page">Anterior</a></li>
             <li className="page-item active">
+            {(publishedHouses.length >= 4) &&
               <a className="page-link" href="#page" onClick={this.handleClickNext}>Siguiente</a>
+            }
             </li>
           </ul>
         </nav>
@@ -42,12 +46,14 @@ class HousesPagination extends Component {
 function mapStateToProps(state) {
   const {
 		activePage,
-    paginationParameters
+    paginationParameters,
+    publishedHouses
 	} = state;
 
   return {
     activePage,
-    paginationParameters
+    paginationParameters,
+    publishedHouses
   }
 }
 
