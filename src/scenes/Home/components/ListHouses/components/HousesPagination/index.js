@@ -14,15 +14,24 @@ class HousesPagination extends Component {
   handleClickNext (e) {
     e.preventDefault();
 
-    const { dispatch, paginationParameters } = this.props;
+    const { dispatch, publishedHouses } = this.props;
 
-    var newActivePage =
-    {
-      itemLastDate: paginationParameters.dateNextPage,
-      pagDirection: 'rigth'
-    };
+    if(publishedHouses.length > 0){
+      let lastItem = publishedHouses[(publishedHouses.length-1)];
+      const dateNextPage = new Date(lastItem.lastModification);
 
-    dispatch(changeActivePage(newActivePage));
+      var newActivePage =
+      {
+        itemLastDate: dateNextPage,
+        pagDirection: 'rigth'
+      };
+
+      dispatch(changeActivePage(newActivePage));
+    }
+
+    //TODO: se utilizara para la navegación a la izquierda
+    //let firstItem = json[0];
+    //datePreviousPage = new Date(firstItem.lastModification);
   }
 
   render() {
@@ -46,13 +55,11 @@ class HousesPagination extends Component {
 function mapStateToProps(state) {
   const {
 		activePage,
-    paginationParameters,
     publishedHouses
 	} = state;
 
   return {
     activePage,
-    paginationParameters,
     publishedHouses
   }
 }
