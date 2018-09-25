@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //Redux
 import { connect } from 'react-redux';
-import { changeActivePage } from '../../../../../../actions';
+import { fetchPublishedHouses } from '../../../../../../actions';
 
 
 class HousesPagination extends Component {
@@ -20,19 +20,42 @@ class HousesPagination extends Component {
       let lastItem = publishedHouses[(publishedHouses.length-1)];
       const dateNextPage = new Date(lastItem.lastModification);
 
-      var newActivePage =
+      var activePage =
       {
         itemLastDate: dateNextPage,
         pagDirection: 'rigth'
       };
 
-      dispatch(changeActivePage(newActivePage));
+      console.log('Home Pager');
+      this.updatePublishedHousesList(activePage);
     }
 
     //TODO: se utilizara para la navegación a la izquierda
     //let firstItem = json[0];
     //datePreviousPage = new Date(firstItem.lastModification);
   }
+
+  //Call to service for update houses list
+	updatePublishedHousesList(activePage){
+		const {
+			dispatch,
+			selectedOperation,
+			selectedProperty,
+			selectedKeyword,
+			selectedPriceRange
+		} = this.props;
+
+		//Build JSON with filters information
+		var filters = {
+				selectedProperty,
+				selectedOperation,
+				selectedKeyword,
+				selectedPriceRange,
+				activePage
+		};
+
+		dispatch(fetchPublishedHouses(filters));
+	}
 
   render() {
 
@@ -54,13 +77,19 @@ class HousesPagination extends Component {
 
 function mapStateToProps(state) {
   const {
-		activePage,
-    publishedHouses
+    publishedHouses,
+    selectedOperation,
+    selectedProperty,
+    selectedKeyword,
+    selectedPriceRange
 	} = state;
 
   return {
-    activePage,
-    publishedHouses
+    publishedHouses,
+    selectedOperation,
+    selectedProperty,
+    selectedKeyword,
+    selectedPriceRange
   }
 }
 

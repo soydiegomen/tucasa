@@ -46,10 +46,9 @@ class Home extends Component {
     if (this.props.selectedOperation !== prevProps.selectedOperation ||
 			this.props.selectedProperty !== prevProps.selectedProperty ||
 			this.props.selectedKeyword !== prevProps.selectedKeyword ||
-			this.props.selectedPriceRange !== prevProps.selectedPriceRange ||
-			this.props.activePage.itemLastDate !== prevProps.activePage.itemLastDate
+			this.props.selectedPriceRange !== prevProps.selectedPriceRange
 		) {
-			console.log('Home itemLastDate', this.props.activePage.itemLastDate);
+			console.log('Home updatePublishedHousesList');
 			this.updatePublishedHousesList();
     }
   }
@@ -61,8 +60,7 @@ class Home extends Component {
 			selectedOperation,
 			selectedProperty,
 			selectedKeyword,
-			selectedPriceRange,
-			activePage
+			selectedPriceRange
 		} = this.props;
 
 		//Build JSON with filters information
@@ -70,8 +68,7 @@ class Home extends Component {
 				selectedProperty,
 				selectedOperation,
 				selectedKeyword,
-				selectedPriceRange,
-				activePage
+				selectedPriceRange
 		};
 
 		dispatch(fetchPublishedHouses(filters));
@@ -102,8 +99,7 @@ function mapStateToProps(state) {
 		publishedHouses,
 		selectedProperty,
 		selectedKeyword,
-		selectedPriceRange,
-		activePage
+		selectedPriceRange
 	} = state;
 
   return {
@@ -111,8 +107,7 @@ function mapStateToProps(state) {
 		publishedHouses,
 		selectedProperty,
 		selectedKeyword,
-		selectedPriceRange,
-		activePage
+		selectedPriceRange
   }
 }
 

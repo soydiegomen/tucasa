@@ -10,9 +10,10 @@ export const getPublishedHousesV2 = (filters) => {
   let minPrice = filters.selectedPriceRange.min;
   let maxPrice = filters.selectedPriceRange.max;
   //Must format de date to ISO and encode for url
-  let itemLastDate = encodeURIComponent(filters.activePage.itemLastDate.toISOString());
+  let itemLastDate = filters.activePage ? encodeURIComponent(filters.activePage.itemLastDate.toISOString())
+    :  encodeURIComponent((new Date()).toISOString());
   //let itemLastDate = filters.itemLastDate ? encodeURIComponent(filters.itemLastDate) : (new Date()).toISOString();
-  let pagDirection = filters.activePage.pagDirection;
+  let pagDirection = filters.activePage ? filters.activePage.pagDirection : 'rigth';
 
   return fetch(`http://localhost:3000/api/published-houses?min=${minPrice}&max=${maxPrice}&operation=${operationFilter}&property=${propertyFilter}&search=${keywordFiler}&itemLastDate=${itemLastDate}&pagDirection=${pagDirection}&pageSize=${PAGE_SIZE}`)
     .then(response => response.json());
