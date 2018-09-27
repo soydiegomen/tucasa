@@ -9,6 +9,7 @@ class HousesPagination extends Component {
   constructor () {
     super();
     this.handleClickNext = this.handleClickNext.bind(this);
+    this.handleClickBefore = this.handleClickBefore.bind(this);
   }
 
   handleClickNext (e) {
@@ -29,10 +30,26 @@ class HousesPagination extends Component {
       console.log('Home Pager');
       this.updatePublishedHousesList(activePage);
     }
+  }
 
-    //TODO: se utilizara para la navegación a la izquierda
-    //let firstItem = json[0];
-    //datePreviousPage = new Date(firstItem.lastModification);
+  handleClickBefore (e) {
+    e.preventDefault();
+
+    const { dispatch, publishedHouses } = this.props;
+
+    if(publishedHouses.length > 0){
+      let firstItem = publishedHouses[0];
+      const dateBeforePage = new Date(firstItem.lastModification);
+
+      var activePage =
+      {
+        itemLastDate: dateBeforePage,
+        pagDirection: 'left'
+      };
+
+      console.log('Before event');
+      this.updatePublishedHousesList(activePage);
+    }
   }
 
   //Call to service for update houses list
@@ -63,7 +80,9 @@ class HousesPagination extends Component {
       return (
         <nav>
           <ul className="pagination justify-content-center">
-            <li className="page-item"><a className="page-link" href="#page">Anterior</a></li>
+            <li className="page-item">
+              <a className="page-link" href="#page" onClick={this.handleClickBefore}>Anterior</a>
+            </li>
             <li className="page-item active">
             {(publishedHouses.length >= 4) &&
               <a className="page-link" href="#page" onClick={this.handleClickNext}>Siguiente</a>
