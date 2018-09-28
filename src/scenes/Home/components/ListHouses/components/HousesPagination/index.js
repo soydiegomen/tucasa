@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 //Redux
 import { connect } from 'react-redux';
-import { fetchPublishedHouses } from '../../../../../../actions';
+import {
+  fetchPublishedHouses,
+  increaseActivePage,
+  decreaseActivePage
+} from '../../../../../../actions';
 
 
 class HousesPagination extends Component {
@@ -27,8 +31,8 @@ class HousesPagination extends Component {
         pagDirection: 'rigth'
       };
 
-      console.log('Home Pager');
       this.updatePublishedHousesList(activePage);
+      dispatch(increaseActivePage());
     }
   }
 
@@ -47,8 +51,8 @@ class HousesPagination extends Component {
         pagDirection: 'left'
       };
 
-      console.log('Before event');
       this.updatePublishedHousesList(activePage);
+      dispatch(decreaseActivePage());
     }
   }
 
@@ -75,19 +79,24 @@ class HousesPagination extends Component {
 	}
 
   render() {
-
-      const publishedHouses = this.props.publishedHouses;
+      const {
+  			publishedHouses,
+        activePage
+  		} = this.props;
+      
       return (
         <nav>
           <ul className="pagination justify-content-center">
-            <li className="page-item">
-              <a className="page-link" href="#page" onClick={this.handleClickBefore}>Anterior</a>
-            </li>
-            <li className="page-item active">
-            {(publishedHouses.length >= 4) &&
-              <a className="page-link" href="#page" onClick={this.handleClickNext}>Siguiente</a>
+            {(activePage > 0) &&
+              <li className="page-item">
+                <a className="page-link" href="#page" onClick={this.handleClickBefore}>Anterior</a>
+              </li>
             }
-            </li>
+            {(publishedHouses.length >= 4) &&
+              <li className="page-item active">
+                <a className="page-link" href="#page" onClick={this.handleClickNext}>Siguiente</a>
+              </li>
+            }
           </ul>
         </nav>
       );
@@ -100,7 +109,8 @@ function mapStateToProps(state) {
     selectedOperation,
     selectedProperty,
     selectedKeyword,
-    selectedPriceRange
+    selectedPriceRange,
+    activePage
 	} = state;
 
   return {
@@ -108,7 +118,8 @@ function mapStateToProps(state) {
     selectedOperation,
     selectedProperty,
     selectedKeyword,
-    selectedPriceRange
+    selectedPriceRange,
+    activePage
   }
 }
 

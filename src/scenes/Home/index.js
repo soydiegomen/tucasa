@@ -48,7 +48,6 @@ class Home extends Component {
 			this.props.selectedKeyword !== prevProps.selectedKeyword ||
 			this.props.selectedPriceRange !== prevProps.selectedPriceRange
 		) {
-			console.log('Home updatePublishedHousesList');
 			this.updatePublishedHousesList();
     }
   }

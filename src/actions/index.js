@@ -5,7 +5,6 @@ export * from './Home/filters';
 
 /*Consts*/
 export const RECEIVE_SIMPLE_POSTS = 'RECEIVE_PUBLISHED_HOUSES';
-export const SET_PAGINATION_PARAMETERS = 'SET_PAGINATION_PARAMETERS';
 
 function receivePublishedHouses(json) {
   return {

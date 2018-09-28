@@ -3,6 +3,8 @@ export const SELECT_PROPERTY = 'SELECT_PROPERTY';
 export const SELECT_KEYWORD = 'SELECT_KEYWORD';
 export const SELECT_PRICE_RANGE = 'SELECT_PRICE_RANGE';
 export const ACTIVATE_PRICE_FILTER = 'ACTIVE_PRICE_FILTER';
+export const INCREASE_ACTIVE_PAGE = 'INCREASE_ACTIVE_PAGE';
+export const DECREASE_ACTIVE_PAGE = 'DECREASE_ACTIVE_PAGE';
 export const DEFAULT_MIN_PRICE = 0;
 export const DEFAULT_MAX_PRICE = 5000;
 
@@ -39,5 +41,17 @@ export const activatePriceFilter = function (isActive) {
   return {
     type: ACTIVATE_PRICE_FILTER,
     isActive
+  };
+}
+
+export const increaseActivePage = function () {
+  return {
+    type: INCREASE_ACTIVE_PAGE
+  };
+}
+
+export const decreaseActivePage = function () {
+  return {
+    type: DECREASE_ACTIVE_PAGE
   };
 }
