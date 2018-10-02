@@ -1,8 +1,8 @@
-import { RECEIVE_SIMPLE_POSTS } from '../../actions';
+import { RECEIVE_PUBLISHED_HOUSES } from '../../actions';
 
 const publishedHouses = (state = [], action) => {
   switch (action.type) {
-    case RECEIVE_SIMPLE_POSTS:
+    case RECEIVE_PUBLISHED_HOUSES:
       return action.publishedHouses;
     default:
       return state

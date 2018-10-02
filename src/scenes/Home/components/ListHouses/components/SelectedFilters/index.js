@@ -23,7 +23,6 @@ class SelectedFilters extends Component {
   /*Helpers*/
   renderSelectedFilter () {
     let activeFilters = [];
-    let selectedFilters = this.props.selectedFilters;
 
     if(this.props.selectedProperty){
       activeFilters.push({ label: this.props.selectedProperty, type:'houseProperty'});
@@ -36,7 +35,7 @@ class SelectedFilters extends Component {
     if(this.props.selectedKeyword){
       activeFilters.push({ label: this.props.selectedKeyword, type:'houseKeyword'});
     }
-    
+
     if(this.props.isActivePriceFilter && (this.props.selectedPriceRange.min || this.props.selectedPriceRange.max)){
       let rangeLabel = `Mayor ${this.props.selectedPriceRange.min} y menor a ${this.props.selectedPriceRange.max}`;
       activeFilters.push({ label:rangeLabel, type:'priceValue'});
