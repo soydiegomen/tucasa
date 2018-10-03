@@ -76,6 +76,9 @@ class SelectedFilters extends Component {
 					dispatch(selectPriceRange(rangePrice));
           dispatch(activatePriceFilter(false));
 					break;
+      default:
+        console.log('Error this is a invalid option');
+        break;
 		}
   }
 

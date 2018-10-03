@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Header from '../../components/Header';
 import Sidebar from './components/Sidebar';
 import ListHouses from './components/ListHouses';
-import { getPublishedHouses } from '../../services/api/Houses';
+//Actions
 import { fetchPublishedHouses, resetActivePage } from '../../actions';
 
 var MINPRICE = 0;

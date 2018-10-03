@@ -6,7 +6,7 @@ class HouseItem extends Component {
 
   renderHouseImage(){
     let houseFiles = this.props.house.filesData;
-    let houseImg = houseFiles.length > 0 ? houseImg = houseFiles[0].fileUrl : '';
+    let houseImg = houseFiles.length > 0 ? houseFiles[0].fileUrl : '';
     return (buildHouseImage(houseImg));
   }
 

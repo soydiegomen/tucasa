@@ -15,6 +15,6 @@ export const getPublishedHousesV2 = (filters) => {
   //let itemLastDate = filters.itemLastDate ? encodeURIComponent(filters.itemLastDate) : (new Date()).toISOString();
   let pagDirection = filters.activePage ? filters.activePage.pagDirection : 'rigth';
 
-  return fetch(`http://localhost:3000/api/published-houses?min=${minPrice}&max=${maxPrice}&operation=${operationFilter}&property=${propertyFilter}&search=${keywordFiler}&itemLastDate=${itemLastDate}&pagDirection=${pagDirection}&pageSize=${PAGE_SIZE}`)
+  return fetch(`${apiConfig.apiurl}/published-houses?min=${minPrice}&max=${maxPrice}&operation=${operationFilter}&property=${propertyFilter}&search=${keywordFiler}&itemLastDate=${itemLastDate}&pagDirection=${pagDirection}&pageSize=${PAGE_SIZE}`)
     .then(response => response.json());
 };
