@@ -83,22 +83,17 @@ class HousesPagination extends Component {
   			publishedHouses,
         activePage
   		} = this.props;
-      
+
+      const beforeBtnIsDisabled = activePage === 0;
+      const nextBtnIsDisabled = publishedHouses.length < 4;
       return (
-        <nav>
-          <ul className="pagination justify-content-center">
-            {(activePage > 0) &&
-              <li className="page-item">
-                <a className="page-link" href="#page" onClick={this.handleClickBefore}>Anterior</a>
-              </li>
-            }
-            {(publishedHouses.length >= 4) &&
-              <li className="page-item active">
-                <a className="page-link" href="#page" onClick={this.handleClickNext}>Siguiente</a>
-              </li>
-            }
-          </ul>
-        </nav>
+          <div className="text-center">
+                <button className={ "btn btn-secondary " + (beforeBtnIsDisabled ? "disabled" : "" )} href="#page" onClick={this.handleClickBefore}
+                  disabled={beforeBtnIsDisabled}>Anterior</button>
+                <button href="#page" onClick={this.handleClickNext}
+                  disabled={nextBtnIsDisabled} className={"btn btn-primary " + (nextBtnIsDisabled ? "disabled" : "" )}>
+                  Siguiente</button>
+          </div>
       );
     }
 }
