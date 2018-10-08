@@ -8,7 +8,8 @@ export const RECEIVE_PUBLISHED_HOUSES = 'RECEIVE_PUBLISHED_HOUSES';
 function receivePublishedHouses(json) {
   return {
     type: RECEIVE_PUBLISHED_HOUSES,
-    publishedHouses: json,
+    items: json.items,
+    totalItems: json.totalItems
   }
 }
 

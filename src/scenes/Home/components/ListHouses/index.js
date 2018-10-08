@@ -11,7 +11,7 @@ class ListHouses extends Component {
 
   render() {
 
-      const publishedHouses = this.props.publishedHouses;
+      const publishedHouses = this.props.publishedHouses.items;
       return (
         <div id="main-container">
           <div className="row">
@@ -22,7 +22,7 @@ class ListHouses extends Component {
                       <i className="fa fa-th-list" aria-hidden="true"></i>
                       <span className="title">Resultado de la búsqueda:
                       </span>
-                      <strong>{publishedHouses.length} propiedades</strong>
+                      <strong> {this.props.publishedHouses.totalItems} propiedades</strong>
                     </div>
                     <div>
                       <SelectedFilters />

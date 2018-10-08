@@ -1,9 +1,12 @@
 import { RECEIVE_PUBLISHED_HOUSES } from '../../actions';
 
-const publishedHouses = (state = [], action) => {
+const publishedHouses = (state = { items: [], totalItems: 0}, action) => {
   switch (action.type) {
     case RECEIVE_PUBLISHED_HOUSES:
-      return action.publishedHouses;
+      return {
+        items : action.items,
+        totalItems: action.totalItems
+      };
     default:
       return state
   }

@@ -8,6 +8,8 @@ export const DECREASE_ACTIVE_PAGE = 'DECREASE_ACTIVE_PAGE';
 export const RESET_ACTIVE_PAGE = 'RESET_ACTIVE_PAGE';
 export const DEFAULT_MIN_PRICE = 0;
 export const DEFAULT_MAX_PRICE = 5000;
+//PAGE SIE is defined in API service file also
+export const GRID_PAGE_SIZE = 4;
 
 
 export const selectOperation = function (operation) {

@@ -96,7 +96,6 @@ class Home extends Component {
 function mapStateToProps(state) {
   const {
 		selectedOperation,
-		publishedHouses,
 		selectedProperty,
 		selectedKeyword,
 		selectedPriceRange
@@ -104,7 +103,6 @@ function mapStateToProps(state) {
 
   return {
     selectedOperation,
-		publishedHouses,
 		selectedProperty,
 		selectedKeyword,
 		selectedPriceRange

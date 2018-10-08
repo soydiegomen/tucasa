@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import {
   fetchPublishedHouses,
   increaseActivePage,
-  decreaseActivePage
+  decreaseActivePage,
+  GRID_PAGE_SIZE
 } from '../../../../../../actions';
 
 
@@ -20,9 +21,10 @@ class HousesPagination extends Component {
     e.preventDefault();
 
     const { dispatch, publishedHouses } = this.props;
+    const items = publishedHouses.items;
 
-    if(publishedHouses.length > 0){
-      let lastItem = publishedHouses[(publishedHouses.length-1)];
+    if(items.length > 0){
+      let lastItem = items[(items.length-1)];
       const dateNextPage = new Date(lastItem.lastModification);
 
       var activePage =
@@ -40,9 +42,10 @@ class HousesPagination extends Component {
     e.preventDefault();
 
     const { dispatch, publishedHouses } = this.props;
+    const items = publishedHouses.items;
 
-    if(publishedHouses.length > 0){
-      let firstItem = publishedHouses[0];
+    if(items.length > 0){
+      let firstItem = items[0];
       const dateBeforePage = new Date(firstItem.lastModification);
 
       var activePage =
@@ -85,15 +88,31 @@ class HousesPagination extends Component {
   		} = this.props;
 
       const beforeBtnIsDisabled = activePage === 0;
-      const nextBtnIsDisabled = publishedHouses.length < 4;
+
+      let lastPage = 0;
+      if(publishedHouses.totalItems > 0){
+        //The last page depends of the total of items between page size.
+        //Must substract one becouse the first active page is zero
+        lastPage = Math.ceil(publishedHouses.totalItems / GRID_PAGE_SIZE) - 1;
+      }
+
+      const nextBtnIsDisabled = activePage === lastPage;
+
       return (
-          <div className="text-center">
-                <button className={ "btn btn-secondary " + (beforeBtnIsDisabled ? "disabled" : "" )} href="#page" onClick={this.handleClickBefore}
-                  disabled={beforeBtnIsDisabled}>Anterior</button>
-                <button href="#page" onClick={this.handleClickNext}
-                  disabled={nextBtnIsDisabled} className={"btn btn-primary " + (nextBtnIsDisabled ? "disabled" : "" )}>
-                  Siguiente</button>
-          </div>
+        <div className="pagination-section text-center">
+          {
+            (lastPage > 0) &&
+              <div>
+                  <button className={ "btn btn-secondary " + (beforeBtnIsDisabled ? "disabled" : "" )}
+                    href="#page" onClick={this.handleClickBefore}
+                    disabled={beforeBtnIsDisabled}>Anterior</button>
+                  <button href="#page" onClick={this.handleClickNext}
+                    disabled={nextBtnIsDisabled}
+                    className={"btn btn-primary " + (nextBtnIsDisabled ? "disabled" : "" )}>
+                    Siguiente</button>
+             </div>
+          }
+        </div>
       );
     }
 }

@@ -72,3 +72,10 @@ a, a:hover{
 .price-filter span:last-child{
 	margin-left: 5px;
 }
+/*Pagination section*/
+.pagination-section{
+	margin: 20px;
+}
+.pagination-section button{
+	margin-right: 10px
+}
