@@ -31,11 +31,18 @@ class ListHouses extends Component {
                 </div>
               </div>
           </div>
+            {
+              (publishedHouses.length === 0) &&
+              <div className="col-md-12">
+                <span>No hay propiedades que coincidan con la busqueda</span>
+              </div>
+            }
             <div className="row">
             {
-              publishedHouses.map( house => (
-                <HouseItem house={house} key={house._id}/>
-              ))
+              (publishedHouses.length > 0) &&
+                publishedHouses.map( house => (
+                  <HouseItem house={house} key={house._id}/>
+                ))
             }
             </div>
             <div className="row">
