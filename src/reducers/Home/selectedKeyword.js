@@ -1,4 +1,4 @@
-import { SELECT_KEYWORD } from '../../actions/Home/filters';
+import { SELECT_KEYWORD } from 'actions/Home/filters';
 
 const selectedKeyword = (state = '', action) => {
   switch (action.type) {

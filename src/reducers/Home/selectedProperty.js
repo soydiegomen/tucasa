@@ -1,4 +1,4 @@
-import { SELECT_PROPERTY } from '../../actions/Home/filters';
+import { SELECT_PROPERTY } from 'actions/Home/filters';
 
 const selectedProperty = (state = '', action) => {
   switch (action.type) {

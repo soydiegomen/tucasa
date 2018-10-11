@@ -1,4 +1,4 @@
-import { RECEIVE_PUBLISHED_HOUSES } from '../../actions';
+import { RECEIVE_PUBLISHED_HOUSES } from 'actions';
 
 const publishedHouses = (state = { items: [], totalItems: 0}, action) => {
   switch (action.type) {

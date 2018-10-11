@@ -2,7 +2,7 @@ import {
   INCREASE_ACTIVE_PAGE,
   DECREASE_ACTIVE_PAGE,
   RESET_ACTIVE_PAGE
-} from '../../actions/Home/filters';
+} from 'actions/Home/filters';
 
 const activePage = (state = 0, action) => {
   switch (action.type) {

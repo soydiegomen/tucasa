@@ -1,4 +1,4 @@
-import { SELECT_OPERATION } from '../../actions/Home/filters';
+import { SELECT_OPERATION } from 'actions/Home/filters';
 
 const selectedOperation = (state = '', action) => {
   switch (action.type) {
