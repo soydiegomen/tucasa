@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import {buildHouseImage} from '../../../../../../services/utilities/ImageHelper';
+import { buildHouseImage } from 'services/utilities/ImageHelper';
 
 class HouseItem extends Component {
 

@@ -1,5 +1,5 @@
 import fetch from 'cross-fetch';
-import apiConfig from '../../config';
+import apiConfig from 'services/config';
 
 export const PAGE_SIZE = 4;
 

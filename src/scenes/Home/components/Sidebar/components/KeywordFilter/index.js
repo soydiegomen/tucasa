@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 //Redux
 import { connect } from 'react-redux';
-
-import { selectKeyword } from '../../../../../../actions';
+//Actions
+import { selectKeyword } from 'actions';
 
 class KeywordFilter extends Component {
 

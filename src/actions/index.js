@@ -1,4 +1,4 @@
-import { getPublishedHousesV2 } from '../services/api/Houses';
+import { getPublishedHousesV2 } from 'services/api/Houses';
 
 export * from './Home/filters';
 

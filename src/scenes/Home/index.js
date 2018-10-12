@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 //Redux
 import { connect } from 'react-redux';
 //Components
-import Header from '../../components/Header';
+import Header from 'components/Header';
 import Sidebar from './components/Sidebar';
 import ListHouses from './components/ListHouses';
 //Actions

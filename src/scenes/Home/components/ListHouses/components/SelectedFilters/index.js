@@ -8,7 +8,7 @@ import {
   selectKeyword,
   selectPriceRange,
   activatePriceFilter
- } from '../../../../../../actions';
+ } from 'actions';
 
 var MINPRICE = 0;
 var MAXPRICE = 5000;

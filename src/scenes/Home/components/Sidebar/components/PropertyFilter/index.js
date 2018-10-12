@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectProperty } from '../../../../../../actions';
+import { selectProperty } from 'actions';
 
 class PropertyFilter extends Component {
 

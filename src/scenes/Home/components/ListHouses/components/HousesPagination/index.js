@@ -6,7 +6,7 @@ import {
   increaseActivePage,
   decreaseActivePage,
   GRID_PAGE_SIZE
-} from '../../../../../../actions';
+} from 'actions';
 
 
 class HousesPagination extends Component {

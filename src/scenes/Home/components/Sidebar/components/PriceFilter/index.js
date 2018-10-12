@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import InputRange from 'react-input-range';
 //Redux
 import { connect } from 'react-redux';
+//Actions
 import {
   selectPriceRange,
   activatePriceFilter,
   DEFAULT_MIN_PRICE,
   DEFAULT_MAX_PRICE
- } from '../../../../../../actions';
+ } from 'actions';
 
 class PriceFilter extends Component {
 

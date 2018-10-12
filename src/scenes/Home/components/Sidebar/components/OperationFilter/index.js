@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+//Redux
 import { connect } from 'react-redux';
-import { selectOperation } from '../../../../../../actions';
+//Actions
+import { selectOperation } from 'actions';
 
 class OperationFilter extends Component {
 

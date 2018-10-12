@@ -1,5 +1,5 @@
 import React from 'react';
-import imageConfig from '../../config';
+import imageConfig from 'services/config';
 
 //Obtienen las casas publicadas con base a ciertos filtros
 export const buildHouseImage = (relativeImage) => {
