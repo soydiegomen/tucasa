@@ -8,6 +8,7 @@ import '../node_modules/react-input-range/lib/css/index.css';
 import './App.css';
 //Scenes
 import Home from './scenes/Home';
+import HouseDetail from './scenes/HouseDetail';
 
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
       <Router >
   			<div>
   				<Route exact path="/" component={Home} />
+          <Route exact path="/detail/:houseId" component={HouseDetail} />
   			</div>
   		</Router>
     );

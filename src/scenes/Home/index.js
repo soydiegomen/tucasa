@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //Components
 import Header from 'components/Header';
+import Footer from 'components/Footer';
 import Sidebar from './components/Sidebar';
 import ListHouses from './components/ListHouses';
 //Actions
@@ -89,6 +90,7 @@ class Home extends Component {
 								</div>
 							</div>
             </div>
+						<Footer />
 	      	</div>
 	    );
   	}
