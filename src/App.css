@@ -79,3 +79,19 @@ a, a:hover{
 .pagination-section button{
 	margin-right: 10px
 }
+
+/*House Detail*/
+.house-metrics{
+	margin: 10px 10px 20px 10px;
+	font-size: 18px;
+}
+.house-metrics a:hover i{
+	color: #D21141;
+}
+.services-list{
+	margin: 10px 20px;
+}
+.services-list .service-item{
+	font-size: 16px;
+	margin: 10px 0;
+}
