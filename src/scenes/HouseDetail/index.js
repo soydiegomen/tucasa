@@ -8,6 +8,7 @@ import HouseCarousel from './components/HouseCarousel';
 import Metrics from './components/Metrics';
 import HouseServices from './components/HouseServices';
 import HouseMap from './components/HouseMap';
+import DetailSideBar from './components/DetailSideBar';
 
 class HouseDetail extends Component {
 	render() {
@@ -40,7 +41,8 @@ class HouseDetail extends Component {
 											<HouseMap />
 										</div>
 									</div>
-									<div className="col-md-12 detail-side-bar">
+									<div className="col-md-3">
+										<DetailSideBar />
 									</div>
 								</div>
 							</div>

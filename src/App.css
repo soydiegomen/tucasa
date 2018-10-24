@@ -95,3 +95,36 @@ a, a:hover{
 	font-size: 16px;
 	margin: 10px 0;
 }
+.house-features {
+	margin: 30px 0;
+}
+.house-features i{
+	display: block;
+	font-size: 30px;
+	margin-bottom: 7px;
+}
+.house-features span{
+	font-size: 18px;
+	font-weight: bold;
+}
+.house-section .form-group{
+	margin-bottom: 0;
+}
+.house-section .form-horizontal .control-label{
+	text-align: left;
+}
+.house-section .form-horizontal .control-label{
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.house-section .form-control-static{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	min-height: 30px;
+}
+.house-section{
+	margin-bottom: 30px;
+}
+.house-actions a{
+	width: 100%;
+}
