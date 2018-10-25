@@ -23,8 +23,8 @@ class HouseDetail extends Component {
 									<div className="col-md-9 detail-main-content">
 										<div className="house-content">
 											<div className="house-summary">
-												<h3>Casa a 5 min del centro de Jilotepec</h3>
-												<h4>LL Calle Alcatraz, Col Javier Barrios</h4>
+												<h2>Casa a 5 min del centro de Jilotepec</h2>
+												<h5>LL Calle Alcatraz, Col Javier Barrios</h5>
 											</div>
 											<HouseCarousel />
 											<Metrics />

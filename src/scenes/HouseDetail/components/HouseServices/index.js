@@ -27,7 +27,7 @@ class HouseServices extends Component {
                 </div>
               </div>
               <div className="col-md-4">
-                <div cclassNamelass="service-item">
+                <div className="service-item">
                   <i className="fa fa-paw" aria-hidden="true"></i>
                   Admite mascotas
                 </div>
