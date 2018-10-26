@@ -59,7 +59,7 @@ a, a:hover{
 .house-content-header{
 	text-align: left;
 }
-.item-details i{
+.detail-main-content i{
 	margin-right: 5px;
 }
 .item-details .house-price{
@@ -81,6 +81,9 @@ a, a:hover{
 }
 
 /*House Detail*/
+.detail-main-content i{
+	margin-right: 5px;
+}
 .house-metrics{
 	margin: 10px 10px 20px 10px;
 	font-size: 18px;
@@ -94,9 +97,6 @@ a, a:hover{
 .services-list .service-item{
 	font-size: 16px;
 	margin: 10px 0;
-}
-.service-item i{
-	margin-right: 5px;
 }
 .house-features {
 	margin: 30px 0;
@@ -130,9 +130,6 @@ a, a:hover{
 }
 .house-actions a{
 	width: 100%;
-}
-.house-actions i{
-	margin-right: 5px;
 }
 /*Contact styel - House detail*/
 .contact-list{

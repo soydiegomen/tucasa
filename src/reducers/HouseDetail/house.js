@@ -2,7 +2,7 @@ import {
   RECEIVE_HOUSE
  } from 'actions';
 
-const house = (state = {
+const defaultState = {
     services: [],
     address: {
         address: '',
@@ -32,7 +32,9 @@ const house = (state = {
     noBathrooms: 0,
     noParking: 0,
     __v: 0
-}, action) => {
+};
+
+const house = (state = defaultState , action) => {
   switch (action.type) {
     case RECEIVE_HOUSE:
       return action.house;
