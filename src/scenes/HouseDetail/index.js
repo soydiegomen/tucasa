@@ -10,10 +10,24 @@ import HouseServices from './components/HouseServices';
 import HouseMap from './components/HouseMap';
 import DetailSideBar from './components/DetailSideBar';
 
+import { fetchHouse } from 'actions';
+
 class HouseDetail extends Component {
+
+
+
+	componentWillMount() {
+		const {
+			dispatch
+		} = this.props;
+
+		dispatch(fetchHouse(this.props.match.params.houseId));
+  }
+
 	render() {
 			//Get houseId
 			//this.props.match.params.houseId
+			const house = this.props.house;
     	return (
     		  <div className="Home">
             <Header />
@@ -23,8 +37,8 @@ class HouseDetail extends Component {
 									<div className="col-md-9 detail-main-content">
 										<div className="house-content">
 											<div className="house-summary">
-												<h2>Casa a 5 min del centro de Jilotepec</h2>
-												<h5>LL Calle Alcatraz, Col Javier Barrios</h5>
+												<h2>{house.title}</h2>
+												<h5>{house.address.address}, {house.address.town}</h5>
 											</div>
 											<HouseCarousel />
 											<Metrics />
@@ -55,7 +69,12 @@ class HouseDetail extends Component {
 
 function mapStateToProps(state) {
 
+	const {
+		house
+	} = state;
+
   return {
+		house
   }
 }
 

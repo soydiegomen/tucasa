@@ -18,3 +18,9 @@ export const getPublishedHousesV2 = (filters) => {
   return fetch(`${apiConfig.apiurl}/published-houses?min=${minPrice}&max=${maxPrice}&operation=${operationFilter}&property=${propertyFilter}&search=${keywordFiler}&itemLastDate=${itemLastDate}&pagDirection=${pagDirection}&pageSize=${PAGE_SIZE}`)
     .then(response => response.json());
 };
+
+export const getHouse = (id) => {
+
+  return fetch(`${apiConfig.apiurl}/house/${id}`)
+    .then(response => response.json());
+};
