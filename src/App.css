@@ -131,6 +131,9 @@ a, a:hover{
 .house-actions a{
 	width: 100%;
 }
+.house-actions i{
+	margin-right: 5px;
+}
 /*Contact styel - House detail*/
 .contact-list{
 	margin: 20px 0 30px;

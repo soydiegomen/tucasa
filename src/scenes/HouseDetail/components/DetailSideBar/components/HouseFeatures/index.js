@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+//Redux
+import { connect } from 'react-redux';
 
 class HouseFeatures extends Component {
 
@@ -8,20 +10,24 @@ class HouseFeatures extends Component {
           <div className="row ">
             <div className="col-md-4 text-center feture-item">
               <i className="fa fa-bed" aria-hidden="true"></i>
-              <span>3</span>
+              <span>{this.props.house.noBedrooms}</span>
             </div>
             <div className="col-md-4 text-center feture-item">
               <i className="fa fa-bath" aria-hidden="true"></i>
-              <span>1</span>
+              <span>{this.props.house.noBathrooms}</span>
             </div>
             <div className="col-md-4 text-center feture-item">
               <i className="fa fa-car" aria-hidden="true"></i>
-              <span>2</span>
+              <span>{this.props.house.noParking}</span>
             </div>
           </div>
         </div>
       );
     }
 }
+function mapStateToProps(state) {
+	const { house } = state;
+  return { house };
+}
 
-export default HouseFeatures;
+export default connect(mapStateToProps)(HouseFeatures);

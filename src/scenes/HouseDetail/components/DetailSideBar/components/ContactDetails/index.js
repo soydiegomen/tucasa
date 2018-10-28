@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+//Redux
+import { connect } from 'react-redux';
+
 
 class ContactDetails extends Component {
 
   render() {
+      const house = this.props.house;
       return (
         <div>
           <div className="house-sectio">
@@ -13,7 +17,7 @@ class ContactDetails extends Component {
                   Nombre:
                 </div>
                 <div className="col-md-7">
-                  Luis Gomez Cruz
+                  {house.contact.name}
                 </div>
               </div>
               <div className="row">
@@ -21,7 +25,9 @@ class ContactDetails extends Component {
                   Teléfono:
                 </div>
                 <div className="col-md-7">
-                  55-23-22-03-85
+                  <a href="#email">
+                    {house.contact.phone}
+                  </a>
                 </div>
               </div>
               <div className="row">
@@ -30,7 +36,7 @@ class ContactDetails extends Component {
                 </div>
                 <div className="col-md-7">
                   <a href="#email">
-                    luis@mail.com
+                    {house.contact.mail}
                   </a>
                 </div>
               </div>
@@ -40,7 +46,7 @@ class ContactDetails extends Component {
                 </div>
                 <div className="col-md-7">
                   <a href="#email">
-                    www.facebook.com/luis
+                    {house.contact.facebook}
                   </a>
                 </div>
               </div>
@@ -50,7 +56,7 @@ class ContactDetails extends Component {
                 </div>
                 <div className="col-md-7">
                   <a href="#email">
-                    www.casasluis.com
+                    {house.contact.website}
                   </a>
                 </div>
               </div>
@@ -67,4 +73,9 @@ class ContactDetails extends Component {
     }
 }
 
-export default ContactDetails;
+function mapStateToProps(state) {
+	const { house } = state;
+  return { house };
+}
+
+export default connect(mapStateToProps)(ContactDetails);
