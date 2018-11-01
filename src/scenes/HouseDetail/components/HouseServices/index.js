@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class HouseServices extends Component {
 
   renderServiceitem (service, i){
-    let classService = ""
+    let classService = "";
     switch (service) {
       case "Internet":
         classService = "fa-wifi";
@@ -17,7 +17,7 @@ class HouseServices extends Component {
         classService = "fa-cutlery";
         break;
       case "Jardin":
-        classService = "fa-paw";
+        classService = "fa-tree";
         break;
       case "Mascotas":
         classService = "fa-paw";
