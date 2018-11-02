@@ -21,6 +21,6 @@ export const getPublishedHousesV2 = (filters) => {
 
 export const getHouse = (id) => {
 
-  return fetch(`${apiConfig.apiurl}/house/${id}`)
+  return fetch(`${apiConfig.apiurl}/house-with-files/${id}`)
     .then(response => response.json());
 };

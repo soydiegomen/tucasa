@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
+//Redux
+import { connect } from 'react-redux';
+//components
+import { buildHouseImage } from 'services/utilities/ImageHelper';
 
 class HouseCarousel extends Component {
 
   render() {
-      return (
+    const filesData = this.props.house.filesData ? this.props.house.filesData : [];
+    return (
         <div className="house-images">
           <div className="house-image-content">
-            <img alt="casa uno" className="img-responsive" src="http://public.tucasa.com:3300/static/uploads/2017/10/12/min-1507865283058-dies-a.jpg" />
+            {
+              (filesData.length > 0) && buildHouseImage(filesData[0].fileUrl)
+            }
           </div>
         </div>
-      );
-    }
+    );
+  }
 }
 
-export default HouseCarousel;
+function mapStateToProps(state) {
+	const { house } = state;
+  return { house };
+}
+
+export default connect(mapStateToProps)(HouseCarousel);

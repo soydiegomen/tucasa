@@ -33,7 +33,7 @@ function receiveHouse(json) {
 export const fetchHouse = function (id) {
   return dispatch => {
     return getHouse(id).then(json => {
-        dispatch(receiveHouse(json));
+        dispatch(receiveHouse(json[0]));
       });
   }
 }
