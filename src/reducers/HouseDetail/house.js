@@ -31,7 +31,8 @@ const defaultState = {
     noBedrooms: 0,
     noBathrooms: 0,
     noParking: 0,
-    __v: 0
+    __v: 0,
+    filesData: [] //Archivos asociados a una propiedad (se llenan con un Join a la tabla de archivos)
 };
 
 const house = (state = defaultState , action) => {
