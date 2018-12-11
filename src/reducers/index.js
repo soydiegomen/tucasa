@@ -7,6 +7,7 @@ import selectedPriceRange from './Home/selectedPriceRange';
 import isActivePriceFilter from './Home/isActivePriceFilter';
 import activePage from './Home/activePage';
 import house from './HouseDetail/house';
+import houseMetrics from './HouseDetail/houseMetrics';
 
 export default combineReducers({
   selectedOperation,
@@ -16,5 +17,6 @@ export default combineReducers({
   selectedPriceRange,
   isActivePriceFilter,
   activePage,
-  house
+  house,
+  houseMetrics
 })

@@ -1,6 +1,7 @@
 import { getPublishedHousesV2, getHouse } from 'services/api/Houses';
 
 export * from './Home/filters';
+export * from './HouseDetail/houseMetrics';
 
 /*Consts*/
 export const RECEIVE_PUBLISHED_HOUSES = 'RECEIVE_PUBLISHED_HOUSES';
