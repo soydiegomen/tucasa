@@ -22,7 +22,7 @@ class Metrics extends Component {
         <div  className="house-metrics">
           <div className="row ">
             <div className="col-md-2 metric-data">
-              <a href="#" className="home-link no-underline" onClick={this.handleAddLike}>
+              <a href="#Me-gusta" className="home-link no-underline" onClick={this.handleAddLike}>
                 <i className="fa fa-heart" aria-hidden="true"></i>
               </a>
               <span>{houseMetrics.likes}</span>

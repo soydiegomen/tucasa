@@ -25,6 +25,9 @@ class HouseServices extends Component {
       case "SeguridadPrivada":
         classService = "fa-taxi";
         break;
+      default:
+        console.log("This service is not defined: " + service);
+        classService = "fa-paw";
     }
 
     return (

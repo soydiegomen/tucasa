@@ -13,11 +13,8 @@ import HouseDescription from './components/HouseDescription';
 /*Action*/
 import {
 	fetchHouse,
-	fetchHouseMetrics,
 	addHouseMetrics
  	} from 'actions';
-/*Services*/
-import { addMetric } from 'services/api/Metrics';
 
 class HouseDetail extends Component {
 
