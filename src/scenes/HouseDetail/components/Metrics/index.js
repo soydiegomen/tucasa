@@ -18,7 +18,6 @@ class Metrics extends Component {
 
   render() {
       const { houseMetrics} = this.props;
-      console.log('houseMetrics', houseMetrics);
       return (
         <div  className="house-metrics">
           <div className="row ">

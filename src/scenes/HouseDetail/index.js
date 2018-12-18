@@ -11,7 +11,13 @@ import HouseMap from './components/HouseMap';
 import DetailSideBar from './components/DetailSideBar';
 import HouseDescription from './components/HouseDescription';
 /*Action*/
-import { fetchHouse, fetchHouseMetrics } from 'actions';
+import {
+	fetchHouse,
+	fetchHouseMetrics,
+	addHouseMetrics
+ 	} from 'actions';
+/*Services*/
+import { addMetric } from 'services/api/Metrics';
 
 class HouseDetail extends Component {
 
@@ -22,7 +28,8 @@ class HouseDetail extends Component {
 		const houseId = this.props.match.params.houseId
 
 		dispatch(fetchHouse(houseId));
-		dispatch(fetchHouseMetrics(houseId));
+		//This action updte metrics and get values
+		dispatch(addHouseMetrics(houseId, 'views'));
   }
 
 	render() {

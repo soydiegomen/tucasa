@@ -12,12 +12,16 @@ export const addMetric = (houseId, type) => {
   if(type !== 'views' && type !== 'likes'){
     //TODO: Send email to de admin for notify invalid case
     console.log('The metric type is not valid!');
-
     //Dont call to the service becouse is an invalid case
     return;
   }
-  return fetch(`${apiConfig.apiurl}/house-with-files/${houseId}`,
-  {
-    type
+
+  return fetch(`${apiConfig.apiurl}/housemetric/${houseId}`,
+    {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ type })
   }).then(response => response.json());
 };
