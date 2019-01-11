@@ -17,7 +17,11 @@ class Metrics extends Component {
   }
 
   render() {
-      const { houseMetrics} = this.props;
+      const { houseMetrics, house } = this.props;
+      //Format last modification date
+      const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+      //The propertie lastModification must be parsed to Date for can able to format its value
+      const lastModification = new Date(house.lastModification).toLocaleString('es-MX', options);
       return (
         <div  className="house-metrics">
           <div className="row ">
@@ -33,7 +37,7 @@ class Metrics extends Component {
             </div>
             <div className="col-md-3 metric-data">
               <i className="fa fa-calendar" aria-hidden="true"></i>
-              <span>10/04/2017</span>
+              <span>{lastModification}</span>
             </div>
           </div>
         </div>
@@ -41,8 +45,8 @@ class Metrics extends Component {
     }
 }
 function mapStateToProps(state) {
-	const { houseMetrics } = state;
-  return { houseMetrics };
+	const { houseMetrics, house } = state;
+  return { houseMetrics, house };
 }
 
 export default connect(mapStateToProps)(Metrics);
