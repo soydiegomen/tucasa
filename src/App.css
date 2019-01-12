@@ -88,9 +88,6 @@ a, a:hover{
 	margin: 10px 10px 20px 10px;
 	font-size: 18px;
 }
-.house-metrics a:hover i{
-	color: #D21141;
-}
 .services-list{
 	margin: 10px 20px;
 }
@@ -133,6 +130,13 @@ a, a:hover{
 }
 .house-actions i{
 	margin-right: 5px;
+}
+/*Like button*/
+.house-metrics a:hover .fa-heart{
+	color: #D21141;
+}
+.house-metrics a.active .fa-heart{
+	color: #D21141;
 }
 /*Contact styel - House detail*/
 .contact-list{

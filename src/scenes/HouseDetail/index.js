@@ -13,10 +13,17 @@ import HouseDescription from './components/HouseDescription';
 /*Action*/
 import {
 	fetchHouse,
-	addHouseMetrics
+	addHouseMetrics,
+	setLike
  	} from 'actions';
 
 class HouseDetail extends Component {
+
+	constructor() {
+    super();
+    this.state = {};
+    this.handleClickLike = this.handleAddLike.bind(this);
+  }
 
 	componentWillMount() {
 		const {
@@ -27,6 +34,21 @@ class HouseDetail extends Component {
 		dispatch(fetchHouse(houseId));
 		//This action updte metrics and get values
 		dispatch(addHouseMetrics(houseId, 'views'));
+  }
+
+	handleAddLike (e) {
+    e.preventDefault();
+
+		const {
+			dispatch
+		} = this.props;
+
+		const houseId = this.props.match.params.houseId
+		const isLiked = this.props.isLiked;
+
+		//This action updte metrics and get values
+		dispatch(addHouseMetrics(houseId, 'likes'));
+		dispatch(setLike(!isLiked));
   }
 
 	render() {
@@ -42,7 +64,7 @@ class HouseDetail extends Component {
 										<h5>{house.address.address}, {house.address.town}</h5>
 									</div>
 									<HouseCarousel />
-									<Metrics />
+									<Metrics onClickLike={this.handleClickLike} />
 									<HouseDescription />
 									<HouseServices />
 									<HouseMap />
@@ -59,8 +81,8 @@ class HouseDetail extends Component {
 }
 
 function mapStateToProps(state) {
-	const { house } = state;
-  return { house };
+	const { house, isLiked } = state;
+  return { house, isLiked };
 }
 
 export default connect(mapStateToProps)(HouseDetail);

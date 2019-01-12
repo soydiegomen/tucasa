@@ -2,6 +2,7 @@ import { getHouseMetrics, addMetric } from 'services/api/Metrics';
 
 export const RECEIVE_HOUSE_METRICS = 'RECEIVE_HOUSE_METRICS';
 export const ADD_HOUSE_METRIC = 'ADD_HOUSE_METRIC';
+export const SET_LIKE = 'SET_LIKE';
 
 /*Get House*/
 function receiveHouseMetrics(json) {
@@ -35,4 +36,11 @@ function receiveUpdatedMetrics(json) {
     //TODO: validar que pasa si el servicio no recibe al menos un elemento
     metrics: json
   }
+}
+
+export const setLike = function (like) {
+  return {
+    type: SET_LIKE,
+    like
+  };
 }

@@ -6,18 +6,10 @@ class Metrics extends Component {
 
   constructor() {
     super();
-    this.state = {};
-    this.handleClickLike = this.handleAddLike.bind(this);
-  }
-
-  handleAddLike (e) {
-    e.preventDefault();
-    //var houseOperation = e.target.id;
-    alert('Like!!');
   }
 
   render() {
-      const { houseMetrics, house } = this.props;
+      const { houseMetrics, house, isLiked } = this.props;
       //Format last modification date
       const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
       //The propertie lastModification must be parsed to Date for can able to format its value
@@ -26,7 +18,8 @@ class Metrics extends Component {
         <div  className="house-metrics">
           <div className="row ">
             <div className="col-md-2 metric-data">
-              <a href="#Me-gusta" className="home-link no-underline" onClick={this.handleAddLike}>
+              <a href="#Me-gusta" className="home-link no-underline"
+                className={isLiked ? "home-link no-underline active": "home-link no-underline"}  onClick={this.props.onClickLike}>
                 <i className="fa fa-heart" aria-hidden="true"></i>
               </a>
               <span>{houseMetrics.likes}</span>
@@ -45,8 +38,8 @@ class Metrics extends Component {
     }
 }
 function mapStateToProps(state) {
-	const { houseMetrics, house } = state;
-  return { houseMetrics, house };
+	const { houseMetrics, house, isLiked } = state;
+  return { houseMetrics, house, isLiked };
 }
 
 export default connect(mapStateToProps)(Metrics);
