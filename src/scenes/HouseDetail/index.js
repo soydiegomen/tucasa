@@ -44,11 +44,9 @@ class HouseDetail extends Component {
 		} = this.props;
 
 		const houseId = this.props.match.params.houseId
-		const isLiked = this.props.isLiked;
 
 		//This action updte metrics and get values
 		dispatch(addHouseMetrics(houseId, 'likes'));
-		dispatch(setLike(!isLiked));
   }
 
 	render() {
@@ -81,8 +79,8 @@ class HouseDetail extends Component {
 }
 
 function mapStateToProps(state) {
-	const { house, isLiked } = state;
-  return { house, isLiked };
+	const { house } = state;
+  return { house };
 }
 
 export default connect(mapStateToProps)(HouseDetail);

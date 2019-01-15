@@ -23,9 +23,15 @@ export const fetchHouseMetrics = function (id) {
 
 /*Add house metric*/
 export const addHouseMetrics = function (id, type) {
-  return dispatch => {
+  return (dispatch, getState) => {
     return addMetric(id, type).then(json => {
         dispatch(receiveUpdatedMetrics(json));
+
+        //Active/deactivate like
+        if(type === 'likes'){
+          const state = getState();
+          dispatch(setLike(!state.isLiked));
+        }
       });
   }
 }
