@@ -1,4 +1,8 @@
-import { getHouseMetrics, addMetric } from 'services/api/Metrics';
+import {
+  getHouseMetrics,
+  addMetric,
+  deleteMetric
+} from 'services/api/Metrics';
 
 export const RECEIVE_HOUSE_METRICS = 'RECEIVE_HOUSE_METRICS';
 export const ADD_HOUSE_METRIC = 'ADD_HOUSE_METRIC';
@@ -26,14 +30,33 @@ export const addHouseMetrics = function (id, type) {
   return (dispatch, getState) => {
     return addMetric(id, type).then(json => {
         dispatch(receiveUpdatedMetrics(json));
-
-        //Active/deactivate like
-        if(type === 'likes'){
-          const state = getState();
-          dispatch(setLike(!state.isLiked));
-        }
-      });
+    });
   }
+}
+
+export const toggleLike = function (id) {
+  return (dispatch, getState) => {
+    const state = getState();
+
+    if(state.isLiked){
+      //Delete like
+      return deleteMetric(id, 'likes').then(json => {
+          updateMetrics(dispatch, json, state.isLiked);
+      });
+    }
+
+    //Add like. Else case.
+    return addMetric(id, 'likes').then(json => {
+        updateMetrics(dispatch, json, state.isLiked);
+    });
+  }
+}
+
+function updateMetrics(dispatch, json, isLiked){
+  dispatch(receiveUpdatedMetrics(json));
+
+  //Active/deactivate like
+  dispatch(setLike(!isLiked));
 }
 
 function receiveUpdatedMetrics(json) {

@@ -14,7 +14,8 @@ import HouseDescription from './components/HouseDescription';
 import {
 	fetchHouse,
 	addHouseMetrics,
-	setLike
+	setLike,
+	toggleLike
  	} from 'actions';
 
 class HouseDetail extends Component {
@@ -39,14 +40,11 @@ class HouseDetail extends Component {
 	handleAddLike (e) {
     e.preventDefault();
 
-		const {
-			dispatch
-		} = this.props;
-
+		const { dispatch } = this.props;
 		const houseId = this.props.match.params.houseId
-
-		//This action updte metrics and get values
-		dispatch(addHouseMetrics(houseId, 'likes'));
+		
+		//This action updte likes and get new metrics
+		dispatch(toggleLike(houseId));
   }
 
 	render() {
