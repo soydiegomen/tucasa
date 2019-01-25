@@ -10,6 +10,7 @@ import HouseServices from './components/HouseServices';
 import HouseMap from './components/HouseMap';
 import DetailSideBar from './components/DetailSideBar';
 import HouseDescription from './components/HouseDescription';
+import { isLikedHouse } from 'services/utilities/LStorageHelper';
 /*Action*/
 import {
 	fetchHouse,
@@ -17,6 +18,7 @@ import {
 	setLike,
 	toggleLike
  	} from 'actions';
+
 
 class HouseDetail extends Component {
 
@@ -35,6 +37,11 @@ class HouseDetail extends Component {
 		dispatch(fetchHouse(houseId));
 		//This action updte metrics and get values
 		dispatch(addHouseMetrics(houseId, 'views'));
+
+		//Check if the house was liked in the past
+		if(isLikedHouse(houseId)){
+			dispatch(setLike(true));
+		}
   }
 
 	handleAddLike (e) {
@@ -42,13 +49,16 @@ class HouseDetail extends Component {
 
 		const { dispatch } = this.props;
 		const houseId = this.props.match.params.houseId
-		
+
 		//This action updte likes and get new metrics
 		dispatch(toggleLike(houseId));
   }
 
 	render() {
 			const house = this.props.house;
+			let clicklikes = localStorage.getItem('clicklikes');
+			console.log('clicklikes2', clicklikes);
+			clicklikes = clicklikes ? clicklikes : 0;
     	return (
     		  <div>
             <Header />
@@ -61,6 +71,7 @@ class HouseDetail extends Component {
 									</div>
 									<HouseCarousel />
 									<Metrics onClickLike={this.handleClickLike} />
+									<h1>{clicklikes}</h1>
 									<HouseDescription />
 									<HouseServices />
 									<HouseMap />

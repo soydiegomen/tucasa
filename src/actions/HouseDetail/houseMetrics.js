@@ -3,6 +3,10 @@ import {
   addMetric,
   deleteMetric
 } from 'services/api/Metrics';
+import {
+  addLikeInLStorage,
+  removeLikeInLStorage
+} from 'services/utilities/LStorageHelper';
 
 export const RECEIVE_HOUSE_METRICS = 'RECEIVE_HOUSE_METRICS';
 export const ADD_HOUSE_METRIC = 'ADD_HOUSE_METRIC';
@@ -42,12 +46,16 @@ export const toggleLike = function (id) {
       //Delete like
       return deleteMetric(id, 'likes').then(json => {
           updateMetrics(dispatch, json, state.isLiked);
+          //Remove like in local storage for do this action just one by "session"
+          removeLikeInLStorage(id);
       });
     }
 
     //Add like. Else case.
     return addMetric(id, 'likes').then(json => {
         updateMetrics(dispatch, json, state.isLiked);
+        //Save like in local storage for do this action just one by "session"
+        addLikeInLStorage(id);
     });
   }
 }
