@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { buildHouseImage } from 'services/utilities/ImageHelper';
 
@@ -14,13 +15,13 @@ class HouseItem extends Component {
       return (
         <div className="col-md-6">
             <article className="house-item">
-              <a href="#showDetails">
+              <Link to={`/propiedad/${this.props.house._id}`}>
                 <div className="cropped-image house-image-content">
                   {this.renderHouseImage()}
                 </div>
-              </a>
+              </Link>
               <div className="item-details">
-                <a href="#showDetails">
+                <Link to={`/propiedad/${this.props.house._id}`}>
                   <h5>
                       <span className="house-price">$ {this.props.house.price}</span>
                       <span>{this.props.house.title}</span>
@@ -39,7 +40,7 @@ class HouseItem extends Component {
                       <span >0</span>
                     </span>
                   </div>
-                </a>
+                </Link>
               </div>
             </article>
           </div>
