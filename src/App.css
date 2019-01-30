@@ -148,3 +148,7 @@ a, a:hover{
 .contact-list .field-title{
 	font-weight: bold;
 }
+/*Custom style for slider*/
+.react-slideshow-wrapper .images-wrap .each-slide div{
+	height: 400px;
+}
