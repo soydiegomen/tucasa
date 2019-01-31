@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //components
 import { Slide } from 'react-slideshow-image';
-import { buildHouseImage } from 'services/utilities/ImageHelper';
+import { Fade } from 'react-slideshow-image';
+import { buildHouseImage, buildHouseImageLink } from 'services/utilities/ImageHelper';
 
 const slideImages = [
   'http://public.tucasa.com:3300/static/uploads/2017/10/12/min-1507865283058-dies-a.jpg',
-  'http://public.tucasa.com:3300/static/uploads/2017/10/12/min-1507865283058-dies-a.jpg'
+  'http://public.tucasa.com:3300/static/uploads/2017/10/12/min-1507865309837-tres-a.jpg'
 ];
 
 const properties = {
@@ -15,26 +16,77 @@ const properties = {
   transitionDuration: 500,
   infinite: true,
   indicators: true,
+  scale: 0.4,
   arrows: true
 }
 
 class HouseCarousel extends Component {
-  render() {
-    const filesData = this.props.house.filesData;
+
+  renderCarousel3 (filesData) {
     return (
-        <div>
-          <Slide {...properties}>
-            <div className="each-slide">
-              <div style={{'backgroundImage': `url(${slideImages[0]})`}}>
+      <div >
+          <h1>Hello!</h1>
+        </div>
+      );
+  }
+
+  renderCarousel2 (filesData) {
+    return (
+      <Slide {...properties}>
+      </Slide>
+    );
+  }
+
+  renderCarousel (filesData) {
+    return
+      <Slide {...properties}>
+      {
+        filesData.map((each, index) =>
+          {
+            return <div className="each-slide" key={index}>
+              <div style={{
+                'backgroundImage': 'url(' + buildHouseImageLink(each.fileUrl) +')'
+              }}>
                 <span>Slide 1</span>
               </div>
             </div>
-            <div className="each-slide">
-              <div style={{'backgroundImage': `url(${slideImages[1]})`}}>
-                <span>Slide 2</span>
-              </div>
+          }
+        )
+      }
+    </Slide>
+  }
+
+  render() {
+    const filesData = this.props.house.filesData;
+    return (
+
+        <div>
+          {
+            (filesData.length === 0) &&
+            <div className="alert alert-secondary">
+              Esta propiedad no tiene una imágen establecida
             </div>
+          }
+          {
+            (filesData.length > 0) &&
+            <Slide {...properties}>
+            {
+              filesData.map((each, index) =>
+                {
+                  return <div className="each-slide" key={index}>
+                    <div style={{
+                      'backgroundImage': 'url(' + buildHouseImageLink(each.fileUrl) +')'
+                    }}>
+                      <span>Slide 1</span>
+                    </div>
+                  </div>
+                }
+              )
+            }
           </Slide>
+
+          }
+
 
         </div>
     );

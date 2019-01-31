@@ -14,3 +14,15 @@ export const buildHouseImage = (relativeImage) => {
   return (<img alt="casa uno" className="img-responsive portrait"
   src={imageUrl} />);
 };
+
+
+export const buildHouseImageLink = (relativeImage) => {
+  let imageUrl = '';
+  if(relativeImage && relativeImage.length > 0){
+    //Default image
+    imageUrl = imageConfig.houseCDNURL + relativeImage;
+  }else{
+    imageUrl = imageConfig.houseCDNURL + 'uploads/2018/3/13/min-1521001117851-seis.jpg';
+  }
+  return imageUrl;
+};
