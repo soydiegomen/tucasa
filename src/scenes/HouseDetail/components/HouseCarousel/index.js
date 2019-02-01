@@ -12,84 +12,41 @@ const slideImages = [
 ];
 
 const properties = {
-  duration: 5000,
   transitionDuration: 500,
   infinite: true,
   indicators: true,
-  scale: 0.4,
   arrows: true
 }
 
 class HouseCarousel extends Component {
 
-  renderCarousel3 (filesData) {
-    return (
-      <div >
-          <h1>Hello!</h1>
-        </div>
-      );
-  }
-
-  renderCarousel2 (filesData) {
-    return (
-      <Slide {...properties}>
-      </Slide>
-    );
-  }
-
   renderCarousel (filesData) {
-    return
+    return (
       <Slide {...properties}>
-      {
-        filesData.map((each, index) =>
-          {
-            return <div className="each-slide" key={index}>
-              <div style={{
-                'backgroundImage': 'url(' + buildHouseImageLink(each.fileUrl) +')'
-              }}>
-                <span>Slide 1</span>
+        {
+          filesData.map((each, index) => {
+              return <div className="each-slide" key={index}>
+                <div style={{
+                    'backgroundImage': 'url(' + buildHouseImageLink(each.fileUrl) +')'
+                  }}>
+                </div>
               </div>
-            </div>
-          }
-        )
-      }
+          })
+        }
     </Slide>
+    );
   }
 
   render() {
     const filesData = this.props.house.filesData;
-    return (
 
-        <div>
-          {
-            (filesData.length === 0) &&
-            <div className="alert alert-secondary">
-              Esta propiedad no tiene una imágen establecida
-            </div>
-          }
-          {
-            (filesData.length > 0) &&
-            <Slide {...properties}>
-            {
-              filesData.map((each, index) =>
-                {
-                  return <div className="each-slide" key={index}>
-                    <div style={{
-                      'backgroundImage': 'url(' + buildHouseImageLink(each.fileUrl) +')'
-                    }}>
-                      <span>Slide 1</span>
-                    </div>
-                  </div>
-                }
-              )
-            }
-          </Slide>
-
-          }
-
-
-        </div>
-    );
+    if(filesData.length === 0){
+      return <div className="alert alert-secondary">
+        Esta propiedad no tiene una imágen establecida
+      </div>
+    }else{
+      return this.renderCarousel(filesData);
+    }
   }
 }
 
@@ -99,18 +56,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(HouseCarousel);
-/*
-<div className="house-images">
-  <div className="house-image-content">
-    {
-      (filesData.length === 0) &&
-      <div className="alert alert-secondary">
-        Esta propiedad no tiene una imágen establecida
-      </div>
-    }
-    {
-      (filesData.length > 0) && buildHouseImage(filesData[0].fileUrl)
-    }
-  </div>
-</div>
-*/

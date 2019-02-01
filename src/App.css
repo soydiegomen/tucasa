@@ -53,9 +53,6 @@ a, a:hover{
 .house-item .item-views{
 	margin-left: 30px;
 }
-.house-item .house-image-content{
-	height: 270px;
-}
 .house-content-header{
 	text-align: left;
 }
@@ -150,5 +147,5 @@ a, a:hover{
 }
 /*Custom style for slider*/
 .react-slideshow-wrapper .images-wrap .each-slide div{
-	height: 400px;
+	height: 450px;
 }
