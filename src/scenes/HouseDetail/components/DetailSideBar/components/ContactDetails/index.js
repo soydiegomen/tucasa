@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 //Redux
 import { connect } from 'react-redux';
 
@@ -25,9 +26,9 @@ class ContactDetails extends Component {
                   Teléfono:
                 </div>
                 <div className="col-md-7">
-                  <a href="#email">
+                  <Link to={`tel:${house.contact.phone}`} target="_blank">
                     {house.contact.phone}
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="row">
@@ -35,9 +36,9 @@ class ContactDetails extends Component {
                   Email:
                 </div>
                 <div className="col-md-7">
-                  <a href="#email">
+                  <Link to={`mailto:${house.contact.mail}`} target="_blank">
                     {house.contact.mail}
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="row">
@@ -45,9 +46,9 @@ class ContactDetails extends Component {
                   Facebook:
                 </div>
                 <div className="col-md-7">
-                  <a href="#email">
+                  <Link to={house.contact.facebook} target="_blank">
                     {house.contact.facebook}
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="row">
@@ -55,9 +56,9 @@ class ContactDetails extends Component {
                   Sitio web:
                 </div>
                 <div className="col-md-7">
-                  <a href="#email">
+                  <Link to={`${house.contact.website}`} target="_blank">
                     {house.contact.website}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
