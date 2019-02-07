@@ -21,46 +21,54 @@ class ContactDetails extends Component {
                   {house.contact.name}
                 </div>
               </div>
-              <div className="row">
-                <div className="col-md-5 field-title">
-                  Teléfono:
+              { house.contact.phone &&
+                <div className="row">
+                  <div className="col-md-5 field-title">
+                    Teléfono:
+                  </div>
+                  <div className="col-md-7">
+                    <Link to={`tel:${house.contact.phone}`} target="_blank">
+                      {house.contact.phone}
+                    </Link>
+                  </div>
                 </div>
-                <div className="col-md-7">
-                  <Link to={`tel:${house.contact.phone}`} target="_blank">
-                    {house.contact.phone}
-                  </Link>
+              }
+              { house.contact.mail &&
+                <div className="row">
+                  <div className="col-md-5 field-title">
+                    Email:
+                  </div>
+                  <div className="col-md-7">
+                    <Link to={`mailto:${house.contact.mail}`} target="_blank">
+                      {house.contact.mail}
+                    </Link>
+                  </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-md-5 field-title">
-                  Email:
+              }
+              { house.contact.facebook &&
+                <div className="row">
+                  <div className="col-md-5 field-title">
+                    Facebook:
+                  </div>
+                  <div className="col-md-7">
+                    <Link to={house.contact.facebook} target="_blank">
+                      {house.contact.facebook}
+                    </Link>
+                  </div>
                 </div>
-                <div className="col-md-7">
-                  <Link to={`mailto:${house.contact.mail}`} target="_blank">
-                    {house.contact.mail}
-                  </Link>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-5 field-title">
-                  Facebook:
-                </div>
-                <div className="col-md-7">
-                  <Link to={house.contact.facebook} target="_blank">
-                    {house.contact.facebook}
-                  </Link>
-                </div>
-              </div>
+              }
+              { house.contact.website &&
               <div className="row">
                 <div className="col-md-5 field-title">
                   Sitio web:
                 </div>
                 <div className="col-md-7">
-                  <Link to={`${house.contact.website}`} target="_blank">
-                    {house.contact.website}
-                  </Link>
+                    <Link to={`${house.contact.website}`} target="_blank">
+                      {house.contact.website}
+                    </Link>
                 </div>
               </div>
+              }
             </div>
           </div>
           <div className="house-actions">
