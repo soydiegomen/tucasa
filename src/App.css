@@ -62,6 +62,9 @@ a, a:hover{
 .item-details .house-price{
 	margin-right: 5px;
 }
+.house-item .house-image-content{
+	height: 270px;
+}
 /*Price Filter*/
 .price-filter span:first-child{
 	margin-right: 5px;

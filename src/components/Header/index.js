@@ -20,13 +20,13 @@ class Header extends Component {
                   <a className="nav-link" href="#inicio">Inicio <span className="sr-only">(current)</span></a>
                 </li>
                 <li className="nav-item active">
-                  <a className="nav-link" href="#servicios">Servicios<span className="sr-only">(current)</span></a>
+                  <a className="nav-link" href="#servicios">Salones de fiesta<span className="sr-only">(current)</span></a>
                 </li>
                 <li className="nav-item active">
-                  <a className="nav-link" href="#portafolio">Portafolio<span className="sr-only">(current)</span></a>
+                  <a className="nav-link" href="#portafolio">Locales<span className="sr-only">(current)</span></a>
                 </li>
                 <li className="nav-item active">
-                  <a className="nav-link" href="#contacto">Contacto<span className="sr-only">(current)</span></a>
+                  <a className="nav-link" href="#contacto">Terrenos<span className="sr-only">(current)</span></a>
                 </li>
               </ul>
               <form className="form-inline my-2 my-lg-0">
