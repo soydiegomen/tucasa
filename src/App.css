@@ -4,6 +4,36 @@ body{
 a, a:hover{
 	color: #323a45;
 }
+/*Footer*/
+.tucasa-footer{
+	background-color: #181a1b;
+	color: #8f9699;
+	padding: 50px 0;
+}
+.tucasa-footer a{
+	color: #8f9699;
+}
+.footer-title{
+	color: #fff;
+}
+.footer-content{
+	margin: 20px 0;
+}
+.foot-social-links{
+	font-size: 1.5em;
+}
+.foot-social-links li{
+	padding: 0 10px;
+}
+.foot-social-links .fa-facebook:hover{
+	color: #3b5998;
+}
+.foot-social-links .fa-instagram:hover{
+	color: #8a3ab9;
+}
+.foot-social-links .fa-twitter:hover{
+	color: #00acee;
+}
 /*Utilities*/
 /* style for crop image */
 .cropped-image {
