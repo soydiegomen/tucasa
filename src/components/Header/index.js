@@ -4,14 +4,22 @@ import brandlogo from './logo-house.png';
 
 class Header extends Component {
   render() {
+      console.log('HEADER', this.props.customClass);
       return (
-        <header>
+        <header className={this.props.customClass}>
           <div className="container">
             <div className="row">
               <div className="col-12">
                 <Navbar bg="light" expand="lg">
                   <Navbar.Brand href="#home">
-                    <img src={brandlogo}  alt="" />
+                    {
+                      !this.props.customClass &&
+                        <img src={brandlogo}  alt="" />
+                    }
+                    {
+                      this.props.customClass === "landing" &&
+                      <i className="fa fa-home" aria-hidden="true"></i>
+                    }
                   </Navbar.Brand>
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
@@ -21,10 +29,6 @@ class Header extends Component {
                       <Nav.Link href="#link">Blog</Nav.Link>
                       <Nav.Link href="#link">Avisos oportunos</Nav.Link>
                     </Nav>
-                    <Form inline>
-                      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                      <Button variant="outline-success">Search</Button>
-                    </Form>
                   </Navbar.Collapse>
                 </Navbar>
               </div>

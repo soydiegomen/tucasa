@@ -9,6 +9,7 @@ import './App.css';
 //Scenes
 import Home from './scenes/Home';
 import HouseDetail from './scenes/HouseDetail';
+import Main from './scenes/Main';
 
 
 class App extends Component {
@@ -16,7 +17,8 @@ class App extends Component {
     return (
       <Router >
   			<div>
-  				<Route exact path="/" component={Home} />
+  				<Route exact path="/" component={Main} />
+          <Route exact path="/home/" component={Home} />
           <Route exact path="/propiedad/:houseId" component={HouseDetail} />
   			</div>
   		</Router>

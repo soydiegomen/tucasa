@@ -4,6 +4,22 @@ body{
 a, a:hover{
 	color: #323a45;
 }
+/*Header Home*/
+nav.bg-light{
+	background-color: inherit !important;
+}
+/*Header - Custom style for landing page*/
+.landing .navbar-light .navbar-nav a.nav-link{
+	color: #fff;
+}
+.landing .navbar-light i{
+	color: #fff;
+	font-size: 1.8em;
+}
+.landing .navbar-light .navbar-toggler {
+		color: #fff;
+    border-color: rgba(f, f, f, 1);
+}
 /*Footer*/
 .tucasa-footer{
 	background-color: #181a1b;
@@ -55,7 +71,19 @@ a, a:hover{
   width: 100%;
   height: auto;
 }
-/*Home*/
+/*Main page*/
+.main-title{
+	height: 500px;
+	background-image: url(http://public.tucasa.com:3300/static/uploads/app-cdn/home-sala.jpg);
+	background-position-y: 80%;
+	background-attachment: fixed;
+}
+.home-title{
+	color: #fff;
+	text-align: center;
+	margin-top: 100px;
+}
+/*Home page*/
 .navbar-light .navbar-nav .nav-link{
 	color: #323a45;
 }

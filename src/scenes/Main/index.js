@@ -4,15 +4,13 @@ import { connect } from 'react-redux';
 //Components
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import Sidebar from './components/Sidebar';
-import ListHouses from './components/ListHouses';
 //Actions
 import { fetchPublishedHouses, resetActivePage } from '../../actions';
 
 var MINPRICE = 0;
 var MAXPRICE = 5000;
 
-class Home extends Component {
+class Main extends Component {
 
 	constructor () {
     super();
@@ -78,15 +76,19 @@ class Home extends Component {
 	render() {
     	return (
     		  <div className="Home">
-						<Header />
+						<div className="main-title">
+							<Header customClass="landing" />
+							<div className="home-title">
+								<h1 className="display-4">Encuentra tu próximo hogar</h1>
+							</div>
+						</div>
 	      		<div className="container-fluid">
 							<div className="row">
 								<div id="sidebar" className="col-md-3">
-									<Sidebar
-									appliedFilters = {this.state.filters}/>
+
 								</div>
 								<div id="houses-content" className="col-md-9">
-									<ListHouses />
+
 								</div>
 							</div>
             </div>
@@ -111,4 +113,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Main);

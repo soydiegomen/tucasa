@@ -1,7 +1,5 @@
-import React from 'react';
-import imageConfig from 'services/config';
 
-//Obtienen las casas publicadas con base a ciertos filtros
+//Save in Local Storage a selected house
 export const addLikeInLStorage = (houseId) => {
   let arrayHousesLiked = localStorage.getItem('arrayHousesLiked');
 
@@ -20,6 +18,7 @@ export const addLikeInLStorage = (houseId) => {
   }
 };
 
+//Check if a house has be liked
 export const isLikedHouse = (houseId) => {
   let arrayHousesLiked = localStorage.getItem('arrayHousesLiked');
   let result = false;
